@@ -2,6 +2,7 @@ import express from 'express';
 import adminBookRouter from './src/routers/admin/book.router';
 import authRouter from './src/routers/auth.router';
 import registerRouter from './src/routers/register.router';
+import userRouter from './src/routers/user.router';
 import cookieParser from 'cookie-parser';
 import checkAuthentication from './src/middlewares/checkAuthentication';
 import database from './src/configs/database';
@@ -29,7 +30,8 @@ app.use('/register', registerRouter);
 
 app.use(checkAuthentication);
 app.use('/admin/book', adminBookRouter);
-app.get('/admin/dashboard', (req, res) => {res.render('dashboard')})
+app.get('/admin/dashboard', (req, res) => {res.render('admin/dashboard')});
+app.use('/user', userRouter);
 
 app.listen(PORT, () => {
     console.log('App running on port: ' + PORT)

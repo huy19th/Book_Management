@@ -4,9 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const book_router_1 = __importDefault(require("./src/routers/book.router"));
+const book_router_1 = __importDefault(require("./src/routers/admin/book.router"));
 const auth_router_1 = __importDefault(require("./src/routers/auth.router"));
 const register_router_1 = __importDefault(require("./src/routers/register.router"));
+const user_router_1 = __importDefault(require("./src/routers/user.router"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const checkAuthentication_1 = __importDefault(require("./src/middlewares/checkAuthentication"));
 const database_1 = __importDefault(require("./src/configs/database"));
@@ -25,16 +26,12 @@ app.use((0, express_session_1.default)({
     resave: true
 }));
 app.use((0, connect_flash_1.default)());
-<<<<<<< HEAD
 app.use('/login', auth_router_1.default);
 app.use('/register', register_router_1.default);
-=======
-app.use("/login", auth_router_1.default);
-app.use("/register", register_router_1.default);
->>>>>>> 4297fc14139cd6d2c6a138122657c908441e7e90
 app.use(checkAuthentication_1.default);
-app.use('/book', book_router_1.default);
-app.get('/dashboard', (req, res) => { res.render('dashboard'); });
+app.use('/admin/book', book_router_1.default);
+app.get('/admin/dashboard', (req, res) => { res.render('admin/dashboard'); });
+app.use('/user', user_router_1.default);
 app.listen(PORT, () => {
     console.log('App running on port: ' + PORT);
 });

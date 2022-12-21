@@ -9,7 +9,7 @@ class AuthController {
     showFormLogIn(req, res) {
         let error = req.flash('error');
         let message = req.flash('message')
-        res.render('login', { error: error , message: message});
+        res.render('sharing/login', { error: error , message: message});
     }
     async authenticate(req, res) {
         if (!req.body.email || !req.body.password) {
@@ -38,7 +38,7 @@ class AuthController {
                     httpOnly: true,
                     maxAge: 60 * 60 * 1000
                 })
-                res.redirect(user.role == 'admin' ? '/dashboard' : 'book');
+                res.redirect(user.role == 'admin' ? 'admin/dashboard' : 'book');
             }
             else {
                 req.flash('error', 'Wrong email or password');
