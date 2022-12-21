@@ -5,8 +5,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const mongoose_2 = require("mongoose");
+const bcrypt = require('bcrypt');
 const LOCAL_DB_URL = 'mongodb://localhost:27017/book_test';
 const CLOUD_DB_URL = 'mongodb+srv://bluebird:0825@bluebird.dthv7st.mongodb.net/book_management';
+function encrypt(password) {
+    return new Promise((resolve, reject) => {
+        bcrypt.hash(password, 10, (err, hash) => {
+            if (err)
+                reject(err);
+            resolve(hash);
+        });
+    });
+}
 const userSchema = new mongoose_2.Schema({
     email: String,
     password: String,
@@ -62,27 +72,27 @@ mongoose_1.default.connect(CLOUD_DB_URL)
     .then(() => console.log('DB Connected!'))
     .catch(error => console.log('DB connection error:', error.message));
 const main = async () => {
-    let user0 = new User({ email: 'eren@gmail.com', password: '123456', name: 'Eren Yeager', phone: '0575400395', address: 'Earth', role: 'admin' });
+    let user0 = new User({ email: 'eren@gmail.com', password: await encrypt('123456'), name: 'Eren Yeager', phone: '0575400395', address: 'Earth', role: 'admin' });
     await user0.save();
-    let user1 = new User({ email: 'mikasa@gmail.com', password: '123456', name: 'Mikasa Ackerman', phone: '0397447651', address: 'Earth', role: 'user' });
+    let user1 = new User({ email: 'mikasa@gmail.com', password: await encrypt('123456'), name: 'Mikasa Ackerman', phone: '0397447651', address: 'Earth', role: 'user' });
     await user1.save();
-    let user2 = new User({ email: 'armin@gmail.com', password: '123456', name: 'Armin Alert', phone: '0833614637', address: 'Earth', role: 'user' });
+    let user2 = new User({ email: 'armin@gmail.com', password: await encrypt('123456'), name: 'Armin Alert', phone: '0833614637', address: 'Earth', role: 'user' });
     await user2.save();
-    let user3 = new User({ email: 'annie@gmail.com', password: '123456', name: 'Annie Leonheart', phone: '0800635667', address: 'Earth', role: 'user' });
+    let user3 = new User({ email: 'annie@gmail.com', password: await encrypt('123456'), name: 'Annie Leonheart', phone: '0800635667', address: 'Earth', role: 'user' });
     await user3.save();
-    let user4 = new User({ email: 'reiner@gmail.com', password: '123456', name: 'Reiner Braun', phone: '0898917636', address: 'Earth', role: 'user' });
+    let user4 = new User({ email: 'reiner@gmail.com', password: await encrypt('123456'), name: 'Reiner Braun', phone: '0898917636', address: 'Earth', role: 'user' });
     await user4.save();
-    let user5 = new User({ email: 'bertholdt@gmail.com', password: '123456', name: 'Bertholdt Hoover', phone: '0798459174', address: 'Earth', role: 'user' });
+    let user5 = new User({ email: 'bertholdt@gmail.com', password: await encrypt('123456'), name: 'Bertholdt Hoover', phone: '0798459174', address: 'Earth', role: 'user' });
     await user5.save();
-    let user6 = new User({ email: 'jean@gmail.com', password: '123456', name: 'Jean Kirschtein', phone: '0748465841', address: 'Earth', role: 'user' });
+    let user6 = new User({ email: 'jean@gmail.com', password: await encrypt('123456'), name: 'Jean Kirschtein', phone: '0748465841', address: 'Earth', role: 'user' });
     await user6.save();
-    let user7 = new User({ email: 'levi@gmail.com', password: '123456', name: 'Levi Ackerman', phone: '0374818608', address: 'Earth', role: 'user' });
+    let user7 = new User({ email: 'levi@gmail.com', password: await encrypt('123456'), name: 'Levi Ackerman', phone: '0374818608', address: 'Earth', role: 'user' });
     await user7.save();
-    let user8 = new User({ email: 'hange@gmail.com', password: '123456', name: 'Hange Zoe', phone: '0695351762', address: 'Earth', role: 'user' });
+    let user8 = new User({ email: 'hange@gmail.com', password: await encrypt('123456'), name: 'Hange Zoe', phone: '0695351762', address: 'Earth', role: 'user' });
     await user8.save();
-    let user9 = new User({ email: 'erwin@gmail.com', password: '123456', name: 'Erwin Smith', phone: '0910715236', address: 'Earth', role: 'user' });
+    let user9 = new User({ email: 'erwin@gmail.com', password: await encrypt('123456'), name: 'Erwin Smith', phone: '0910715236', address: 'Earth', role: 'user' });
     await user9.save();
-    let user10 = new User({ email: 'floch@gmail.com', password: '123456', name: 'Floch Forster', phone: '0884920510', address: 'Earth', role: 'user' });
+    let user10 = new User({ email: 'floch@gmail.com', password: await encrypt('123456'), name: 'Floch Forster', phone: '0884920510', address: 'Earth', role: 'user' });
     await user10.save();
     let author1 = new Author({ name: 'J. R. R. Tolkien' });
     await author1.save();
@@ -1439,4 +1449,4 @@ const main = async () => {
     console.log('Done');
 };
 main();
-//# sourceMappingURL=data.js.map
+//# sourceMappingURL=data2.js.map

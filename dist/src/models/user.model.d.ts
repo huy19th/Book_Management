@@ -29,13 +29,21 @@ declare const User: import("mongoose").Model<{
     password: string;
     phone: string;
     address: string;
+<<<<<<< HEAD
     role: "user" | "admin";
+=======
+    role?: "user" | "admin";
+>>>>>>> 4297fc14139cd6d2c6a138122657c908441e7e90
 }, {}, {}, {}, Schema<any, import("mongoose").Model<any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     email: string;
     name: string;
     password: string;
     phone: string;
     address: string;
+<<<<<<< HEAD
     role: "user" | "admin";
+=======
+    role?: "user" | "admin";
+>>>>>>> 4297fc14139cd6d2c6a138122657c908441e7e90
 }>>;
 export default User;

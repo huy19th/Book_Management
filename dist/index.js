@@ -25,8 +25,13 @@ app.use((0, express_session_1.default)({
     resave: true
 }));
 app.use((0, connect_flash_1.default)());
+<<<<<<< HEAD
 app.use('/login', auth_router_1.default);
 app.use('/register', register_router_1.default);
+=======
+app.use("/login", auth_router_1.default);
+app.use("/register", register_router_1.default);
+>>>>>>> 4297fc14139cd6d2c6a138122657c908441e7e90
 app.use(checkAuthentication_1.default);
 app.use('/book', book_router_1.default);
 app.get('/dashboard', (req, res) => { res.render('dashboard'); });
