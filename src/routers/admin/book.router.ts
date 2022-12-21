@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
-import bookController from '../controllers/book.controller';
-import checkAuthorization from '../middlewares/checkAuthorization';
+import bookController from '../../controllers/admin/book.controller';
+import checkAuthorization from '../../middlewares/checkAuthorization';
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

@@ -1,5 +1,5 @@
 import express from 'express';
-import bookRouter from './src/routers/book.router';
+import adminBookRouter from './src/routers/admin/book.router';
 import authRouter from './src/routers/auth.router';
 import registerRouter from './src/routers/register.router';
 import cookieParser from 'cookie-parser';
@@ -28,8 +28,8 @@ app.use('/login', authRouter);
 app.use('/register', registerRouter);
 
 app.use(checkAuthentication);
-app.use('/book', bookRouter);
-app.get('/dashboard', (req, res) => {res.render('dashboard')})
+app.use('/admin/book', adminBookRouter);
+app.get('/admin/dashboard', (req, res) => {res.render('dashboard')})
 
 app.listen(PORT, () => {
     console.log('App running on port: ' + PORT)

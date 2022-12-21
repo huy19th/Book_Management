@@ -1,7 +1,7 @@
 import fs from 'fs';
-import Book from "../models/book.model";
+import Book from "../../models/book.model";
 import multer from 'multer';
-import Author from '../models/author.model';
+import Author from '../../models/author.model';
 
 const upload = multer();
 
