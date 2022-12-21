@@ -1,6 +1,7 @@
 import express from 'express';
 import bookRouter from './src/routers/book.router';
 import authRouter from './src/routers/auth.router';
+import registerRouter from './src/routers/register.router';
 import cookieParser from 'cookie-parser';
 import checkAuthentication from './src/middlewares/checkAuthentication';
 import database from './src/configs/database';
@@ -24,6 +25,7 @@ app.use(session({
 
 app.use(flash());
 app.use("/login", authRouter);
+app.use("/register", registerRouter);
 
 app.use(checkAuthentication);
 app.use('/book', bookRouter);
