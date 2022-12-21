@@ -1,0 +1,1 @@
+{"version":3,"file":"checkAuthorization.js","sourceRoot":"","sources":["../../../src/middlewares/checkAuthorization.ts"],"names":[],"mappings":";;AAAA,MAAM,kBAAkB,GAAG,CAAC,GAAG,EAAE,GAAG,EAAE,IAAI,EAAE,EAAE;IAC1C,IAAI,GAAG,CAAC,OAAO,CAAC,IAAI,KAAK,OAAO,EAAE;QAC9B,GAAG,CAAC,IAAI,CAAC,eAAe,CAAC,CAAC;KAC7B;SACI;QACD,IAAI,EAAE,CAAC;KACV;AACL,CAAC,CAAA;AAED,kBAAe,kBAAkB,CAAC"}
