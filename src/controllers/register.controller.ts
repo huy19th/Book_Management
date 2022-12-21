@@ -1,7 +1,7 @@
 import User from '../models/user.model';
-import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
-const key = 'Knowledge is Power';
+const Salt = 10;
 
 class RegisterController {
     showFormRegister(req, res) {
@@ -12,14 +12,18 @@ class RegisterController {
                 error[field] = item[field].message
             }
         })
-        res.render('register', {error: error});
+        res.render('register', { error: error });
     }
-    async register (req, res) {
+    async register(req, res) {
         try {
             let user = new User(req.body);
-            await user.save();
-            req.flash('message', 'Register Successed!')
-            res.redirect('/login');
+            bcrypt.hash(user.password, Salt, async (err, hash) => {
+                if (err) throw err;
+                user.password = hash;
+                await user.save();
+                req.flash('message', 'Register Successed!')
+                res.redirect('/login');
+            });
         }
         catch (err) {
             req.flash('error', err.errors);
