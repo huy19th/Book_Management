@@ -68,7 +68,7 @@ const orderDetailSchema = new Schema({
 const OrderDetail = model('OrderDetail', orderDetailSchema);
 
 mongoose.set('strictQuery', false);
-mongoose.connect(LOCAL_DB_URL)
+mongoose.connect(CLOUD_DB_URL)
     .then(() => console.log('DB Connected!'))
     .catch(error => console.log('DB connection error:', error.message));
 

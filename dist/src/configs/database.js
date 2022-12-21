@@ -9,7 +9,7 @@ const CLOUD_DB_URL = 'mongodb+srv://bluebird:0825@bluebird.dthv7st.mongodb.net/b
 let database = {
     connect: () => {
         mongoose_1.default.set('strictQuery', false);
-        mongoose_1.default.connect(LOCAL_DB_URL)
+        mongoose_1.default.connect(CLOUD_DB_URL)
             .then(() => console.log('DB Connected!'))
             .catch(error => console.log('DB connection error:', error.message));
     }

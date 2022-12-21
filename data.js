@@ -90,7 +90,7 @@ var orderDetailSchema = new mongoose_2.Schema({
 });
 var OrderDetail = (0, mongoose_2.model)('OrderDetail', orderDetailSchema);
 mongoose_1["default"].set('strictQuery', false);
-mongoose_1["default"].connect(LOCAL_DB_URL)
+mongoose_1["default"].connect(CLOUD_DB_URL)
     .then(function () { return console.log('DB Connected!'); })["catch"](function (error) { return console.log('DB connection error:', error.message); });
 //Tạo User;
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -2846,6 +2846,7 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 return [4 /*yield*/, orderDetail454.save()];
             case 687:
                 _a.sent();
+                console.log('Done');
                 return [2 /*return*/];
         }
     });
