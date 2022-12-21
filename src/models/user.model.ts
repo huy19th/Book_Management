@@ -22,10 +22,11 @@ const userSchema = new Schema({
     },
     address: {
         type: String,
-        required: [true]
+        required: [true, 'Address cannot be blank']
     },
     role: {
         type: String,
+        default: 'user',
         enum: ['user', 'admin']
     }
 })

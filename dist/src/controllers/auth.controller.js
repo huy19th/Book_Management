@@ -10,7 +10,8 @@ const key = 'Knowledge is Power';
 class AuthController {
     showFormLogIn(req, res) {
         let error = req.flash('error');
-        res.render('login', { error: error });
+        let message = req.flash('message');
+        res.render('login', { error: error, message: message });
     }
     async authenticate(req, res) {
         if (!req.body.email || !req.body.password) {

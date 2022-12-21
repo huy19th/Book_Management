@@ -7,7 +7,8 @@ const key = 'Knowledge is Power';
 class AuthController {
     showFormLogIn(req, res) {
         let error = req.flash('error');
-        res.render('login', {error: error});
+        let message = req.flash('message')
+        res.render('login', {error: error, message: message});
     }
     // authenticate(req, res, next) {
     //     passport.authenticate("local", (err, user) => {
