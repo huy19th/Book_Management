@@ -54,7 +54,7 @@ class UserController {
     async savePassword(req, res) {
         let user = await User.findOne({_id: req.decoded._id});
         try {
-                    bcrypt.hash(req.body.password, salt, async (err, hash) => {
+            bcrypt.hash(req.body.password, salt, async (err, hash) => {
             user.password = hash;
             await user.save();
             req.flash('message', 'Changed password succesfully')
@@ -66,7 +66,8 @@ class UserController {
         }
     }
     logout(req, res) {
-
+        res.clearCookie('token');
+        res.redirect('/login');
     }
 }
 
