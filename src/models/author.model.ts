@@ -9,6 +9,6 @@ const authorSchema = new Schema({
     image: String
 })
 
-const Author = model('author', authorSchema);
+const Author = model('Author', authorSchema);
 
 export default Author;

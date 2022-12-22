@@ -18,6 +18,6 @@ const orderDetailSchema = new Schema({
     }
 })
 
-const OrderDetail = model('Order', orderDetailSchema);
+const OrderDetail = model('OrderDetail', orderDetailSchema);
 
 export default OrderDetail;
