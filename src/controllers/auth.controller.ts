@@ -17,7 +17,9 @@ class AuthController {
             req.flash('error', 'Email & password cannot be blank');
             return res.redirect('/login');
         }
+        console.log(req.body);
         let user = await UserModel.findOne({ email: req.body.email });
+        console.log(user)
         if (!user) {
             console.log`User doesn't exist`
             req.flash('error', `User doesn't exist`);
@@ -38,7 +40,7 @@ class AuthController {
                     httpOnly: true,
                     maxAge: 60 * 60 * 1000
                 })
-                res.redirect(user.role == 'admin' ? 'admin/dashboard' : 'book');
+                res.redirect(user.role == 'admin' ? '/admin/dashboard' : '/user/dashboard');
             }
             else {
                 req.flash('error', 'Wrong email or password');

@@ -11,5 +11,4 @@ let database = {
             .catch(error => console.log('DB connection error:', error.message));
     }
 }
-
 export default database;
