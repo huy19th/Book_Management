@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const orderDetailSchema = new Schema({
     order: {
         type: Schema.Types.ObjectId,
-        required: [true, `This product doensn't belong to any order`],
+        required: [true, `This product doesn't belong to any order`],
         ref: 'Order'
     },
     book: {
@@ -14,7 +14,7 @@ const orderDetailSchema = new Schema({
     quantity: {
         type: Number,
         required: [true, `Please include quantity`],
-        min: [0, `1 is the mininum number of products you can buy`]
+        min: [0, `1 is the minimum number of products you can buy`]
     }
 })
 
