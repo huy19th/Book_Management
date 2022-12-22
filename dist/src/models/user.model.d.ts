@@ -25,15 +25,15 @@
 import { Schema } from "mongoose";
 declare const User: import("mongoose").Model<{
     email: string;
-    name: string;
     password: string;
+    name: string;
     phone: string;
     address: string;
     role: "user" | "admin";
 }, {}, {}, {}, Schema<any, import("mongoose").Model<any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     email: string;
-    name: string;
     password: string;
+    name: string;
     phone: string;
     address: string;
     role: "user" | "admin";
