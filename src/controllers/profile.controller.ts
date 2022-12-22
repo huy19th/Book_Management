@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 const salt = 10;
 
-class UserController {
+class ProfileController {
     async showInfo(req, res) {
         let array = req.flash('error');
         let message = req.flash('message');
@@ -71,6 +71,6 @@ class UserController {
     }
 }
 
-let userController = new UserController();
+let profileController = new ProfileController();
 
-export default userController;
+export default profileController;
