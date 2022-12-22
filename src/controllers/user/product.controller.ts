@@ -19,7 +19,15 @@ class Product {
     }
 
     async showProductDetails(req, res, next) {
-        res.render('user/book/product-details')
+        try{
+            console.log(1)
+            const product = await Book.findOne({_id: req.params.id}).populate('publisher');
+            console.log(product)
+            res.render('user/book/product-details',{data:product});
+        } catch(err) {
+            console.log(err)
+            res.render(err)
+        }
     }
     async search(req,res,next){
         try {

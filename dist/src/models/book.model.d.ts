@@ -25,21 +25,21 @@
 import { Schema } from "mongoose";
 declare const Book: import("mongoose").Model<{
     name: string;
-    quantity: number;
-    price: number;
     category: import("mongoose").Types.ObjectId[][];
     author: import("mongoose").Types.ObjectId;
-    publisher: import("mongoose").Types.ObjectId;
+    quantity: number;
+    price: number;
     description?: string;
     image?: string;
+    publisher?: import("mongoose").Types.ObjectId;
 }, {}, {}, {}, Schema<any, import("mongoose").Model<any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     name: string;
-    quantity: number;
-    price: number;
     category: import("mongoose").Types.ObjectId[][];
     author: import("mongoose").Types.ObjectId;
-    publisher: import("mongoose").Types.ObjectId;
+    quantity: number;
+    price: number;
     description?: string;
     image?: string;
+    publisher?: import("mongoose").Types.ObjectId;
 }>>;
 export default Book;

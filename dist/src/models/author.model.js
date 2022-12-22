@@ -9,6 +9,6 @@ const authorSchema = new mongoose_1.Schema({
     biography: String,
     image: String
 });
-const Author = (0, mongoose_1.model)('Author', authorSchema);
+const Author = (0, mongoose_1.model)('author', authorSchema);
 exports.default = Author;
 //# sourceMappingURL=author.model.js.map

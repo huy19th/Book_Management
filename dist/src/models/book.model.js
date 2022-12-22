@@ -8,18 +8,17 @@ const bookSchema = new mongoose_1.Schema({
     },
     category: [{
             type: [mongoose_1.Schema.Types.ObjectId],
-            ref: 'Category',
+            ref: 'category',
             required: [true, 'Please select at least 1 category']
         }],
     author: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'Author',
+        ref: 'author',
         required: [true, 'Please include an author']
     },
     publisher: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'Publisher',
-        required: [true, 'Please include a publisher']
+        ref: 'publisher',
     },
     description: String,
     image: String,
