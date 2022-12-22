@@ -9,12 +9,8 @@ import database from './src/configs/database';
 import session from 'express-session';
 import flash from 'connect-flash';
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
-import userRouter from './src/routers/profile.router';
-=======
 // import userRouter from './src/routers/user.router';
 import userRouter from './src/routers/user/dashboard.router'
->>>>>>> 27834fcd8436ccaa222a2971fe2d2d7f4fa53ee7
 import userProductRouter from './src/routers/user/product.router';
 
 const PORT = 3000;
