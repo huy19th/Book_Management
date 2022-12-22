@@ -1,5 +1,7 @@
 import { Schema, model } from "mongoose";
 
+
+
 // const keywordsSchema = new Schema({
 //     keyword: String
 // })
@@ -11,18 +13,18 @@ const bookSchema = new Schema({
     },
     category: [{
         type: [Schema.Types.ObjectId],
-        ref: 'Category',
+        ref: 'category',
         required: [true, 'Please select at least 1 category']
     }],
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'Author',
+        ref: 'author',
         required: [true, 'Please include an author']
     },
     publisher: {
         type: Schema.Types.ObjectId,
-        ref: 'Publisher',
-        required: [true, 'Please include a publisher']
+        ref: 'publisher',
+
     },
     description: String,
     image: String,

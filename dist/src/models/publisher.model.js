@@ -9,6 +9,6 @@ const publisherSchema = new mongoose_1.Schema({
     info: String,
     logo: String
 });
-const Publisher = (0, mongoose_1.model)('Publisher', publisherSchema);
+const Publisher = (0, mongoose_1.model)('publisher', publisherSchema);
 exports.default = Publisher;
 //# sourceMappingURL=publisher.model.js.map

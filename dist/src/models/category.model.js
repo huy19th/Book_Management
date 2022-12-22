@@ -10,6 +10,6 @@ const categorySchema = new mongoose_1.Schema({
         type: String
     }
 });
-const Category = (0, mongoose_1.model)('Category', categorySchema);
+const Category = (0, mongoose_1.model)('category', categorySchema);
 exports.default = Category;
 //# sourceMappingURL=category.model.js.map
