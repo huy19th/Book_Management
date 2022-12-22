@@ -1,6 +1,7 @@
 import express from 'express';
 import adminBookRouter from './src/routers/admin/book.router';
 import authRouter from './src/routers/auth.router';
+import profileRouter from './src/routers/profile.router';
 import registerRouter from './src/routers/register.router';
 import cookieParser from 'cookie-parser';
 import checkAuthentication from './src/middlewares/checkAuthentication';
@@ -34,6 +35,8 @@ app.use('/login', authRouter);
 app.use('/register', registerRouter);
 
 app.use(checkAuthentication);
+
+app.use('/profile', profileRouter)
 app.use('/user', userRouter);
 app.use('/user', userProductRouter);
 app.use('/admin/book', adminBookRouter);
