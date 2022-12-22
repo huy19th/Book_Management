@@ -10,7 +10,6 @@ class BookController {
         res.render("book/create");
     }
     async addBook(req, res) {
-        console.log(req.file);
         try {
             const authorNew = new Author({name: req.body.author});
             const bookNew = new Book({

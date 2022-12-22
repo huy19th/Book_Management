@@ -23,9 +23,11 @@ class Product {
     }
     async search(req,res,next){
         try {
+            console.log(3)
             let products = await Book.find({
                 name: {$regex: req.query.keyword, $options: 'i'}
-            }).populate('category')
+            });
+            console.log(products)
             res.status(200).json(products)
         } catch (e) {
             res.json({
