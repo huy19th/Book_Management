@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <input onkeyup="searchProduct(this.value)" type="text" placeholder="Search"/>
                     </div>
                 </div>
             </div>
@@ -367,22 +367,25 @@
                             </div>
                         </div>
                     </div>
-                    <% data.products.forEach((item, index) => { %>
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="/user/images/shop/<%= item.image %>" alt="" width="241" height="224"
-                                             style="object-fit: contain"/>
-                                        <h2><%= item.price %></h2>
-                                        <p><a href="/user/productDetail/:id">Click for more detail</a></p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                            to cart</a>
+                    <div id="list-products">
+                        <% data.products.forEach((item, index) => { %>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="/user/images/shop/<%= item.image %>" alt="" width="241" height="224" style="object-fit: contain"/>
+                                            <h2><%= item.price %></h2>
+                                            <p><%=item.name%></p>
+                                            <p><a href="/user/productDetails/<%=item._id%>">Click for more detail</a></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                                to cart</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <% }) %>
+                        <% }) %>
+                    </div>
+
                 </div>
 
             </div><!--features_items-->
@@ -553,7 +556,8 @@
 
 </footer><!--/Footer-->
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+<script src="/user/js/my.js"></script>
 <script src="/user/js/jquery.js"></script>
 <script src="/user/js/price-range.js"></script>
 <script src="/user/js/jquery.scrollUp.min.js"></script>

@@ -163,6 +163,7 @@
 				</div>
 				
 				<div class="col-sm-9 padding-right">
+
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
@@ -204,19 +205,19 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="/user/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h1>Lính Trơn</h1>
+								<h1><%=data.name%></h1>
 								<img src="/user/images/product-details/rating.png" alt="" />
 								<span>
-									<span>US $59</span>
-									<label>Quantity: 3</label>
+									<span><%=data.price%></span>
+									<label><%=data.quantity%></label>
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
 								</span>
-								<p><b>Author: </b>Tom Holland</p>
-								<p><b>Publisher: </b>Nhà xuất bản Tuổi Trẻ</p>
-								<p><b>Category: </b>Politics</p>
+								<p><b>Author: </b><%=data?.author?.name%></p>
+								<p><b>Publisher: </b><%=data?.publisher?.name%></p>
+								<p><b>Category: </b><%=data?.category?.name%></p>
 								<p><b>Description: </b>New</p>
 								<p><b>Availability: </b>In Stock</p>
 								<p><b>Store Name:</b> HLY-Books</p>
