@@ -47,8 +47,6 @@ class AuthController {
                 res.redirect('/login');
             }
         });
-
-
     }
     showFormLogInGoogle() {
         passport.authenticate('google', { scope: ['profile', 'email'] });

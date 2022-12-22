@@ -61,8 +61,8 @@ const publisherSchema = new Schema({
 const Publisher = model('Publisher', publisherSchema);
 
 const orderSchema = new Schema({
-    orderDate: Date,
-    deliveryDate: Date,
+    orderDate: Date || String,
+    deliverDate: Date || String,
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     totalMoney: Number,
 })
@@ -196,7 +196,7 @@ const main = async () => {
     let order15 = new Order({ orderDate: '2022-10-9', deliverDate: '2022-10-10', user: user7._id, totalMoney: 245000 }); await order15.save();
     let order16 = new Order({ orderDate: '2022-6-17', deliverDate: '2022-6-18', user: user2._id, totalMoney: 70000 }); await order16.save();
     let order17 = new Order({ orderDate: '2021-9-13', deliverDate: '2021-9-17', user: user9._id, totalMoney: 615000 }); await order17.save();
-    let order18 = new Order({ orderDate: '2021-10-1', deliverDate: '2021-10-3', user: user3._id, totalMoney: 240000 }); await order18.save();
+    let order18 = new Order({ orderDate: '2021-10-2', deliverDate: '2021-10-3', user: user3._id, totalMoney: 240000 }); await order18.save();
     let order19 = new Order({ orderDate: '2022-11-10', deliverDate: '2022-11-12', user: user4._id, totalMoney: 372000 }); await order19.save();
     let order20 = new Order({ orderDate: '2021-12-6', deliverDate: '2021-12-10', user: user5._id, totalMoney: 75000 }); await order20.save();
     let order21 = new Order({ orderDate: '2021-7-7', deliverDate: '2021-7-11', user: user7._id, totalMoney: 95000 }); await order21.save();
@@ -208,11 +208,11 @@ const main = async () => {
     let order27 = new Order({ orderDate: '2021-7-12', deliverDate: '2021-7-16', user: user7._id, totalMoney: 273500 }); await order27.save();
     let order28 = new Order({ orderDate: '2022-4-23', deliverDate: '2022-4-26', user: user10._id, totalMoney: 770000 }); await order28.save();
     let order29 = new Order({ orderDate: '2021-7-4', deliverDate: '2021-7-5', user: user1._id, totalMoney: 290000 }); await order29.save();
-    let order30 = new Order({ orderDate: '2022-11-30', deliverDate: '2022-12-1', user: user10._id, totalMoney: 170000 }); await order30.save();
+    let order30 = new Order({ orderDate: '2022-11-30', deliverDate: '2022-12-2', user: user10._id, totalMoney: 170000 }); await order30.save();
     let order31 = new Order({ orderDate: '2022-2-3', deliverDate: '2022-2-7', user: user2._id, totalMoney: 338500 }); await order31.save();
     let order32 = new Order({ orderDate: '2022-8-7', deliverDate: '2022-8-11', user: user10._id, totalMoney: 170000 }); await order32.save();
     let order33 = new Order({ orderDate: '2022-6-9', deliverDate: '2022-6-11', user: user6._id, totalMoney: 204000 }); await order33.save();
-    let order34 = new Order({ orderDate: '2021-1-1', deliverDate: '2021-1-5', user: user3._id, totalMoney: 390000 }); await order34.save();
+    let order34 = new Order({ orderDate: '2021-1-2', deliverDate: '2021-1-5', user: user3._id, totalMoney: 390000 }); await order34.save();
     let order35 = new Order({ orderDate: '2022-2-20', deliverDate: '2022-2-22', user: user2._id, totalMoney: 372500 }); await order35.save();
     let order36 = new Order({ orderDate: '2021-4-20', deliverDate: '2021-4-22', user: user4._id, totalMoney: 324000 }); await order36.save();
     let order37 = new Order({ orderDate: '2021-5-30', deliverDate: '2021-6-2', user: user6._id, totalMoney: 85000 }); await order37.save();
@@ -241,7 +241,7 @@ const main = async () => {
     let order60 = new Order({ orderDate: '2022-1-13', deliverDate: '2022-1-14', user: user2._id, totalMoney: 440000 }); await order60.save();
     let order61 = new Order({ orderDate: '2022-2-8', deliverDate: '2022-2-12', user: user9._id, totalMoney: 245000 }); await order61.save();
     let order62 = new Order({ orderDate: '2022-12-5', deliverDate: '2022-12-6', user: user9._id, totalMoney: 370000 }); await order62.save();
-    let order63 = new Order({ orderDate: '2022-1-29', deliverDate: '2022-2-1', user: user9._id, totalMoney: 131500 }); await order63.save();
+    let order63 = new Order({ orderDate: '2022-1-29', deliverDate: '2022-2-2', user: user9._id, totalMoney: 131500 }); await order63.save();
     let order64 = new Order({ orderDate: '2021-9-17', deliverDate: '2021-9-20', user: user5._id, totalMoney: 355000 }); await order64.save();
     let order65 = new Order({ orderDate: '2021-11-22', deliverDate: '2021-11-25', user: user4._id, totalMoney: 830000 }); await order65.save();
     let order67 = new Order({ orderDate: '2022-5-21', deliverDate: '2022-5-23', user: user10._id, totalMoney: 447000 }); await order67.save();
@@ -254,7 +254,7 @@ const main = async () => {
     let order74 = new Order({ orderDate: '2022-8-2', deliverDate: '2022-8-3', user: user4._id, totalMoney: 522000 }); await order74.save();
     let order75 = new Order({ orderDate: '2021-3-4', deliverDate: '2021-3-7', user: user9._id, totalMoney: 205000 }); await order75.save();
     let order76 = new Order({ orderDate: '2021-3-17', deliverDate: '2021-3-21', user: user10._id, totalMoney: 195000 }); await order76.save();
-    let order77 = new Order({ orderDate: '2022-3-1', deliverDate: '2022-3-4', user: user3._id, totalMoney: 85000 }); await order77.save();
+    let order77 = new Order({ orderDate: '2022-3-2', deliverDate: '2022-3-4', user: user3._id, totalMoney: 85000 }); await order77.save();
     let order78 = new Order({ orderDate: '2022-4-9', deliverDate: '2022-4-10', user: user6._id, totalMoney: 260000 }); await order78.save();
     let order79 = new Order({ orderDate: '2021-1-14', deliverDate: '2021-1-17', user: user5._id, totalMoney: 100000 }); await order79.save();
     let order80 = new Order({ orderDate: '2022-7-18', deliverDate: '2022-7-19', user: user10._id, totalMoney: 490000 }); await order80.save();
@@ -271,11 +271,11 @@ const main = async () => {
     let order91 = new Order({ orderDate: '2021-12-21', deliverDate: '2021-12-24', user: user2._id, totalMoney: 84000 }); await order91.save();
     let order93 = new Order({ orderDate: '2022-7-18', deliverDate: '2022-7-21', user: user7._id, totalMoney: 270000 }); await order93.save();
     let order94 = new Order({ orderDate: '2022-9-2', deliverDate: '2022-9-4', user: user7._id, totalMoney: 492000 }); await order94.save();
-    let order95 = new Order({ orderDate: '2022-12-1', deliverDate: '2022-12-3', user: user5._id, totalMoney: 247000 }); await order95.save();
+    let order95 = new Order({ orderDate: '2022-12-2', deliverDate: '2022-12-3', user: user5._id, totalMoney: 247000 }); await order95.save();
     let order96 = new Order({ orderDate: '2021-3-5', deliverDate: '2021-3-9', user: user8._id, totalMoney: 600000 }); await order96.save();
     let order97 = new Order({ orderDate: '2022-10-31', deliverDate: '2022-11-3', user: user8._id, totalMoney: 220000 }); await order97.save();
     let order98 = new Order({ orderDate: '2021-12-24', deliverDate: '2021-12-26', user: user2._id, totalMoney: 75000 }); await order98.save();
-    let order99 = new Order({ orderDate: '2022-9-29', deliverDate: '2022-10-1', user: user10._id, totalMoney: 222000 }); await order99.save();
+    let order99 = new Order({ orderDate: '2022-9-29', deliverDate: '2022-10-2', user: user10._id, totalMoney: 222000 }); await order99.save();
     let order100 = new Order({ orderDate: '2021-3-14', deliverDate: '2021-3-16', user: user5._id, totalMoney: 460000 }); await order100.save();
     let order101 = new Order({ orderDate: '2022-1-25', deliverDate: '2022-1-28', user: user6._id, totalMoney: 295000 }); await order101.save();
     let order103 = new Order({ orderDate: '2021-11-22', deliverDate: '2021-11-26', user: user8._id, totalMoney: 490000 }); await order103.save();
@@ -284,12 +284,12 @@ const main = async () => {
     let order106 = new Order({ orderDate: '2021-12-30', deliverDate: '2021-12-31', user: user10._id, totalMoney: 115000 }); await order106.save();
     let order107 = new Order({ orderDate: '2021-4-21', deliverDate: '2021-4-24', user: user3._id, totalMoney: 231500 }); await order107.save();
     let order108 = new Order({ orderDate: '2021-12-2', deliverDate: '2021-12-6', user: user6._id, totalMoney: 91500 }); await order108.save();
-    let order109 = new Order({ orderDate: '2021-9-1', deliverDate: '2021-9-4', user: user4._id, totalMoney: 98000 }); await order109.save();
+    let order109 = new Order({ orderDate: '2021-9-2', deliverDate: '2021-9-4', user: user4._id, totalMoney: 98000 }); await order109.save();
     let order110 = new Order({ orderDate: '2022-4-18', deliverDate: '2022-4-22', user: user10._id, totalMoney: 70000 }); await order110.save();
-    let order111 = new Order({ orderDate: '2021-1-31', deliverDate: '2021-2-1', user: user5._id, totalMoney: 415000 }); await order111.save();
+    let order111 = new Order({ orderDate: '2021-1-31', deliverDate: '2021-2-2', user: user5._id, totalMoney: 415000 }); await order111.save();
     let order112 = new Order({ orderDate: '2022-3-25', deliverDate: '2022-3-28', user: user9._id, totalMoney: 265000 }); await order112.save();
     let order113 = new Order({ orderDate: '2022-3-3', deliverDate: '2022-3-6', user: user3._id, totalMoney: 74000 }); await order113.save();
-    let order114 = new Order({ orderDate: '2021-3-1', deliverDate: '2021-3-2', user: user5._id, totalMoney: 75000 }); await order114.save();
+    let order114 = new Order({ orderDate: '2021-3-2', deliverDate: '2021-3-2', user: user5._id, totalMoney: 75000 }); await order114.save();
     let order115 = new Order({ orderDate: '2022-5-26', deliverDate: '2022-5-30', user: user1._id, totalMoney: 935000 }); await order115.save();
     let order116 = new Order({ orderDate: '2022-10-13', deliverDate: '2022-10-17', user: user9._id, totalMoney: 253000 }); await order116.save();
     let order117 = new Order({ orderDate: '2021-3-11', deliverDate: '2021-3-13', user: user4._id, totalMoney: 125000 }); await order117.save();
@@ -321,9 +321,9 @@ const main = async () => {
     let order145 = new Order({ orderDate: '2022-7-2', deliverDate: '2022-7-3', user: user2._id, totalMoney: 275000 }); await order145.save();
     let order146 = new Order({ orderDate: '2022-9-12', deliverDate: '2022-9-14', user: user2._id, totalMoney: 195000 }); await order146.save();
     let order147 = new Order({ orderDate: '2021-12-5', deliverDate: '2021-12-9', user: user8._id, totalMoney: 245000 }); await order147.save();
-    let order148 = new Order({ orderDate: '2022-8-11', deliverDate: '2022-8-13', user: user6._id, totalMoney: 405000 }); await order148.save();
-    let order149 = new Order({ orderDate: '2021-6-5', deliverDate: '2021-6-9', user: user2._id, totalMoney: 170000 }); await order149.save();
-    let order150 = new Order({ orderDate: '2022-12-13', deliverDate: '2022-12-17', user: user1._id, totalMoney: 220000 }); await order150.save();
+    let order148 = new Order({ orderDate: '2022-12-20', deliverDate: '', user: user6._id, totalMoney: 405000 }); await order148.save();
+    let order149 = new Order({ orderDate: '2022-12-19', deliverDate: '', user: user2._id, totalMoney: 170000 }); await order149.save();
+    let order150 = new Order({ orderDate: '2022-12-13', deliverDate: '', user: user1._id, totalMoney: 220000 }); await order150.save();
 
     let orderDetail1 = new OrderDetail({ order: order139._id, book: book18._id, quantity: 1 }); await orderDetail1.save();
     let orderDetail2 = new OrderDetail({ order: order21._id, book: book11._id, quantity: 1 }); await orderDetail2.save();

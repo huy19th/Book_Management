@@ -1,4 +1,7 @@
 import User from '../models/user.model';
+import bcrypt from 'bcrypt';
+
+const salt = 10;
 
 class UserController {
     async showInfo(req, res) {
@@ -32,11 +35,35 @@ class UserController {
             res.redirect('/user/change-info');
         }
     }
-    showFormConfirmOldPassword(req, res) {
+    async showFormChangePassword(req, res) {
+        let message = req.flash('message');
+        let error = req.flash('error');
+        res.render('sharing/changePassword', {message: message, error: error});
     }
-    showFormChangePassword(req, res) {
-    }
+    async confirmCurrentPassword(req, res) {
+        let user = await User.findOne({_id: req.decoded._id});
+        let currentPassword = req.params.currentPassword;
+        console.log(currentPassword);
+        bcrypt.compare(currentPassword, user.password, (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.json(true);
+            }
+            else res.json(false);
+    })}
     async savePassword(req, res) {
+        let user = await User.findOne({_id: req.decoded._id});
+        try {
+                    bcrypt.hash(req.body.password, salt, async (err, hash) => {
+            user.password = hash;
+            await user.save();
+            req.flash('message', 'Changed password succesfully')
+            res.redirect('/user/change-password');
+        });
+        }
+        catch (err) {
+            req.flash('error', err.errors);
+        }
     }
     logout(req, res) {
 
