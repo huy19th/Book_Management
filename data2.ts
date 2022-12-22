@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
-import { Schema, model } from 'mongoose';
+import User from './src/models/user.model';
+import Book from './src/models/book.model';
+import Category from './src/models/category.model';
+import Author from './src/models/author.model';
+import Publisher from './src/models/publisher.model';
+import Order from './src/models/order.model';
+import OrderDetail from './src/models/orderdetail.model';
 const bcrypt = require('bcrypt');
 
 const LOCAL_DB_URL = 'mongodb://localhost:27017/book_test';
@@ -13,69 +19,6 @@ function encrypt(password: string) {
         });
     })
 }
-const userSchema = new Schema({
-    email: String,
-    password: String,
-    name: String,
-    phone: String,
-    address: String,
-    role: String
-})
-
-const User = model('User', userSchema);
-
-const bookSchema = new Schema({
-    name: String,
-    category: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
-    author: { type: Schema.Types.ObjectId, ref: 'Author' },
-    publisher: { type: Schema.Types.ObjectId, ref: 'Publisher' },
-    description: String,
-    image: String,
-    quantity: Number,
-    price: Number
-})
-
-const Book = model('Book', bookSchema);
-
-const categorySchema = new Schema({
-    name: String,
-    description: String
-});
-
-const Category = model('Category', categorySchema);
-
-const authorSchema = new Schema({
-    name: String,
-    biography: String,
-    image: String,
-})
-
-const Author = model('Author', authorSchema);
-
-const publisherSchema = new Schema({
-    name: String,
-    info: String,
-    logo: String,
-})
-
-const Publisher = model('Publisher', publisherSchema);
-
-const orderSchema = new Schema({
-    orderDate: Date || String,
-    deliverDate: Date || String,
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    totalMoney: Number,
-})
-
-const Order = model('Order', orderSchema);
-
-const orderDetailSchema = new Schema({
-    order: { type: Schema.Types.ObjectId, ref: 'Order' },
-    book: { type: Schema.Types.ObjectId, ref: 'Book' },
-    quantity: Number
-})
-
-const OrderDetail = model('OrderDetail', orderDetailSchema);
 
 mongoose.set('strictQuery', false);
 mongoose.connect(CLOUD_DB_URL)
@@ -321,9 +264,9 @@ const main = async () => {
     let order145 = new Order({ orderDate: '2022-7-2', deliverDate: '2022-7-3', user: user2._id, totalMoney: 275000 }); await order145.save();
     let order146 = new Order({ orderDate: '2022-9-12', deliverDate: '2022-9-14', user: user2._id, totalMoney: 195000 }); await order146.save();
     let order147 = new Order({ orderDate: '2021-12-5', deliverDate: '2021-12-9', user: user8._id, totalMoney: 245000 }); await order147.save();
-    let order148 = new Order({ orderDate: '2022-12-20', deliverDate: '', user: user6._id, totalMoney: 405000 }); await order148.save();
-    let order149 = new Order({ orderDate: '2022-12-19', deliverDate: '', user: user2._id, totalMoney: 170000 }); await order149.save();
-    let order150 = new Order({ orderDate: '2022-12-13', deliverDate: '', user: user1._id, totalMoney: 220000 }); await order150.save();
+    let order148 = new Order({ orderDate: '2022-12-20', deliverDate: '', user: user6._id, totalMoney: '' }); await order148.save();
+    let order149 = new Order({ orderDate: '2022-12-19', deliverDate: '', user: user2._id, totalMoney: '' }); await order149.save();
+    let order150 = new Order({ orderDate: '2022-12-13', deliverDate: '', user: user1._id, totalMoney: '' }); await order150.save();
 
     let orderDetail1 = new OrderDetail({ order: order139._id, book: book18._id, quantity: 1 }); await orderDetail1.save();
     let orderDetail2 = new OrderDetail({ order: order21._id, book: book11._id, quantity: 1 }); await orderDetail2.save();
