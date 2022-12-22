@@ -8,7 +8,8 @@ import database from './src/configs/database';
 import session from 'express-session';
 import flash from 'connect-flash';
 const bodyParser = require('body-parser');
-import userRouter from './src/routers/user/dashboard.router';
+// import userRouter from './src/routers/user.router';
+import userRouter from './src/routers/user/dashboard.router'
 import userProductRouter from './src/routers/user/product.router';
 
 const PORT = 3000;
@@ -34,7 +35,7 @@ app.use('/register', registerRouter);
 
 app.use(checkAuthentication);
 app.use('/user', userRouter);
-app.use('/user',userProductRouter);
+app.use('/user', userProductRouter);
 app.use('/admin/book', adminBookRouter);
 app.get('/admin/dashboard', (req, res) => {res.render('admin/dashboard')});
 
