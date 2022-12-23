@@ -1286,3 +1286,7 @@ h6 {
 #book-action {
   width: 10%;
 }
+
+.form-check-label {
+  font-size: 13px
+}

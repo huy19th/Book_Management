@@ -1,33 +1,66 @@
 import fs from 'fs';
 import Book from "../../models/book.model";
+import Author from "../../models/author.model";
+import Publisher from "../../models/publisher.model";
+import Category from "../../models/category.model";
 import multer from 'multer';
-import Author from '../../models/author.model';
 
 const upload = multer();
 
 class BookController {
-    showFormAddBook(req, res) {
-        res.render("admin/book/create");
+    async showFormAddBook(req, res) {
+        let array = req.flash('error');
+        let error = {};
+        array.forEach(item => {
+            for (let field in item) {
+                error[field] = item[field].message
+            }
+        });
+        let book = req.flash('book')[0];
+        // console.log(book);
+        let categories = await Category.aggregate([
+            {$sort: {name : 1}}
+        ]);
+        res.render("admin/book/add", {categories: categories, error: error, book: book});
     }
     async addBook(req, res) {
         try {
-            const authorNew = new Author({name: req.body.author});
+            let authorName = req.body.author;
+            let author = await Author.findOne({name: authorName});
+            if (!author) {
+                author = new Author({name: authorName});
+                await author.save();
+            }
+
+            let publisherName = req.body.publisher;
+            let publisher = await Publisher.findOne({name: publisherName});
+            if (!publisher) {
+                publisher = new Publisher({name: publisherName});
+                await publisher.save();
+            }
+
             const bookNew = new Book({
-                title: req.body.title,
+                name: req.body.name,
+                author: author._id,
+                publisher: publisher._id,
+                quantity: req.body.quantity,
+                price: req.body.price,
                 description: req.body.description,
-                author: authorNew,
+                category: req.body.category
             });
             bookNew.image = req.file ? `/img/book/${req.file.filename}` : '';
-            const p1 = authorNew.save();
-            const p2 = bookNew.save();
-            let [author, book] = await Promise.all([p1, p2]);
+            let book = await bookNew.save();
             if (book) {
-                res.redirect("admin/book/list");
+                res.redirect("/admin/book");
             } else {
                 res.render("error");
             }
-        } catch (err) {
-            res.render("error");
+        }
+        catch (err) {
+            req.flash('error', err.errors);
+            console.log(err.errors);
+            req.flash('book', req.body);
+            res.redirect('/admin/book/add');
         }
     }
     async showList(req, res) {
@@ -74,12 +107,12 @@ class BookController {
 
             await book.save();
             if (book) {
-                res.redirect("admin/book/list");
+                res.redirect('/admin/book');
             } else {
-                res.render("error");
+                res.render('error');
             }
         } catch (err) {
-            res.render("error");
+            res.end(err);   
         }
     }
     async deleteBook(req, res) {

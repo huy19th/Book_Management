@@ -5,7 +5,7 @@ import checkAuthorization from '../../middlewares/checkAuthorization';
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './src/public/img/book')
+        cb(null, './public/sharing/img/book')
     },
     filename: function (req, file, cb) {
         let reg = /png|jpg|jpeg|svg/;
