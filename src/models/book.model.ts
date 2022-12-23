@@ -8,11 +8,11 @@ const bookSchema = new Schema({
         type: String,
         required: [true, 'Please include book name']
     },
-    category: [{
+    category: {
         type: [Schema.Types.ObjectId],
         ref: Category,
         required: [true, 'Please select at least 1 category']
-    }],
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: Author,
