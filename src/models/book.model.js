@@ -9,11 +9,11 @@ var bookSchema = new mongoose_1.Schema({
         type: String,
         required: [true, 'Please include book name']
     },
-    category: [{
-            type: [mongoose_1.Schema.Types.ObjectId],
-            ref: category_model_1["default"],
-            required: [true, 'Please select at least 1 category']
-        }],
+    category: {
+        type: [mongoose_1.Schema.Types.ObjectId],
+        ref: category_model_1["default"],
+        required: [true, 'Please select at least 1 category']
+    },
     author: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: author_model_1["default"],
