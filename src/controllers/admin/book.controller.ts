@@ -7,7 +7,7 @@ const upload = multer();
 
 class BookController {
     showFormAddBook(req, res) {
-        res.render("book/create");
+        res.render("admin/book/create");
     }
     async addBook(req, res) {
         try {
@@ -22,7 +22,7 @@ class BookController {
             const p2 = bookNew.save();
             let [author, book] = await Promise.all([p1, p2]);
             if (book) {
-                res.redirect("/book");
+                res.redirect("admin/book/list");
             } else {
                 res.render("error");
             }
@@ -32,10 +32,8 @@ class BookController {
     }
     async showList(req, res) {
         try {
-            const books = await Book.find().populate({
-                path: "author", select: "name"
-            });
-            res.render("book/list", { books: books});
+            const books = await Book.find().populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"});
+            res.render("admin/book/list", { books: books});
         } catch {
             res.render("error");
         }
@@ -45,7 +43,7 @@ class BookController {
             const book = await Book.findOne({ _id: req.params.id }).populate({ path: 'author', select: 'name' });
             console.log(book, 'book')
             if (book) {
-                res.render("book/detail", { book: book })
+                res.render("admin/book/detail", { book: book })
             } else {
                 res.render("error");
             }
@@ -76,7 +74,7 @@ class BookController {
 
             await book.save();
             if (book) {
-                res.redirect("/book");
+                res.redirect("admin/book/list");
             } else {
                 res.render("error");
             }
@@ -89,7 +87,7 @@ class BookController {
             const book = await Book.findOne({ _id: req.params.id });
             if (book) {
                 await book.remove();
-                res.redirect('/book');
+                res.redirect('admin/book');
             }
             else {
                 res.render("error");
