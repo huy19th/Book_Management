@@ -9,7 +9,7 @@ import database from './src/configs/database';
 import session from 'express-session';
 import flash from 'connect-flash';
 const bodyParser = require('body-parser');
-// import userRouter from './src/routers/user.router';
+import path from 'path'
 import userRouter from './src/routers/user/dashboard.router'
 import userProductRouter from './src/routers/user/product.router';
 

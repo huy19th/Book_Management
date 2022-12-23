@@ -1258,3 +1258,31 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.hide {
+  display: none;
+}
+
+.item:hover .hide {
+  display: inline-block;
+}
+
+#book-title {
+  width: 35%
+}
+
+#book-author {
+  width: 20%
+}
+
+#book-publisher {
+  width: 20%
+}
+
+#book-price {
+  width: 15%
+}
+
+#book-action {
+  width: 10%;
+}
