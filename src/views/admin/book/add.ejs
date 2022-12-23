@@ -61,42 +61,42 @@
                   <div class="row mb-3">
                     <label for="name" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="name" name="name" <%- book.name ? `value="${book.name}"` : '' %>>
+                      <input type="text" class="form-control" id="name" name="name">
                       <%- `<p class="text-danger">${error.name ? error.name : ''}` %>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="author" class="col-sm-2 col-form-label">Author</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="author" name="author" <%- book.author ? `value="${book.author}"` : '' %>>
+                      <input type="text" class="form-control" id="author" name="author">
                       <%- `<p class="text-danger">${error.author ? error.author : ''}` %>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="publisher" name="publisher" <%- book.publisher ? `value="${book.publisher}"` : '' %>>
+                      <input type="text" class="form-control" id="publisher" name="publisher">
                       <%- `<p class="text-danger">${error.publisher ? error.publisher : ''}` %>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="quantity" name="quantity" <%- book.quantity ? `value="${book.quantity}"` : '' %>>
+                      <input type="number" class="form-control" id="quantity" name="quantity">
                       <%- `<p class="text-danger">${error.quantity ? error.quantity : ''}` %>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="price" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="price" name="price" <%- book.price ? `value="${book.price}"` : '' %>>
+                      <input type="number" class="form-control" id="price" name="price">
                       <%- `<p class="text-danger">${error.price ? error.price : ''}` %>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="description" name="description" rows="4" cols="50"><%- book.description ? book.description : '' %></textarea>
+                      <textarea class="form-control" id="description" name="description" rows="4" cols="50"></textarea>
                     </div>
                   </div>
                   <div class="row mb-3">

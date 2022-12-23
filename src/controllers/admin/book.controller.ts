@@ -17,7 +17,7 @@ class BookController {
             }
         });
         let book = req.flash('book')[0];
-        console.log(book);
+        // console.log(book);
         let categories = await Category.aggregate([
             {$sort: {name : 1}}
         ]);
@@ -58,6 +58,7 @@ class BookController {
         }
         catch (err) {
             req.flash('error', err.errors);
+            console.log(err.errors);
             req.flash('book', req.body);
             res.redirect('/admin/book/add');
         }
