@@ -23,7 +23,10 @@ const bookSchema = new Schema({
         ref: Publisher
     },
     description: String,
-    image: String,
+    image: {
+        type: String,
+        default: '/sharing/img/book/no-image.jpg'
+    },
     quantity: {
         type: Number,
         required: [true, 'Please include quantity']

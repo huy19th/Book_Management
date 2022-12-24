@@ -48,7 +48,7 @@ class BookController {
                 description: req.body.description,
                 category: req.body.category
             });
-            bookNew.image = req.file ? `/img/book/${req.file.filename}` : '';
+            bookNew.image = req.file ? `/sharing/img/book/${req.file.filename}` : '';
             let book = await bookNew.save();
             if (book) {
                 res.redirect("/admin/book");
@@ -71,17 +71,26 @@ class BookController {
             res.render("error");
         }
     }
-    async showBookDetail(req, res) {
+    async showBookDetail(req, res, next) {
         try {
-            const book = await Book.findOne({ _id: req.params.id }).populate({ path: 'author', select: 'name' });
-            console.log(book, 'book')
+            const book = await Book.findOne({ _id: req.params.id })
+            .populate({ path: 'author', select: 'name' })
+            .populate({ path: 'publisher', select: 'name'})
+            .populate({ path: 'category', select: 'name'});
+            console.log(book);
+            let error = req.flash('error');
+            let categories = await Category.aggregate([
+                {$sort: {name : 1}}
+            ]);
             if (book) {
-                res.render("admin/book/detail", { book: book })
-            } else {
+                res.render("admin/book/detail", { book: book, categories: categories, error: error });
+            }
+            else {
                 res.render("error");
             }
-        } catch (err) {
-            res.render("error");
+        }
+        catch (err) {
+            next(err);
         }
     }
     async updateBook(req, res) {
@@ -90,6 +99,7 @@ class BookController {
             book.name = req.body.name;
             book.description = req.body.description;
             let authorName = req.body.author;
+            let publisherName = req.body.publisher;
 
             let author = await Author.findOne({ name: authorName });
             if (!author) {
@@ -98,11 +108,18 @@ class BookController {
             }
             book.author = author._id;
 
+            let publisher = await Publisher.findOne({name: publisherName});
+            if (!publisher) {
+                publisher = new Publisher({name: publisherName});
+                await publisher.save();
+            }
+            book.publisher = publisher._id;
+
             if (req.file) {
-                if (book.image) fs.unlink(`./src/public/${book.image}`, err => {
+                if (book.image) fs.unlink(`./public/${book.image}`, err => {
                     if (err) console.log(err);
                 });
-                book.image = `/img/book/${req.file.filename}`
+                book.image = `/sharing/img/book/${req.file.filename}`
             }
 
             await book.save();

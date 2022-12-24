@@ -26,7 +26,7 @@ router.post('/add', upload.single('image'), bookController.addBook);
 
 router.get('/', bookController.showList);
 
-router.post('/update/:id', upload.single('image'), bookController.updateBook);
+router.post('/detail/:id', upload.single('image'), bookController.updateBook);
 
 router.get('/detail/:id', bookController.showBookDetail);
 

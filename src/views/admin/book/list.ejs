@@ -82,7 +82,7 @@
                       <tr class="item">
                         <td><%- i + 1 %></td>
                         <td>
-                          <a href="/book/detail/<%= books[i]._id %>" target="_self">
+                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self">
                             <%= books[i].name %>
                           </a>
                         </td>
@@ -96,10 +96,10 @@
                           <%= books[i].price ? books[i].price : "" %>
                         </td>
                         <td class="action-icon">
-                          <a href="/book/detail/<%= books[i]._id %>" target="_self" class="hide">
+                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self" class="hide">
                             <i class="bi bi-pencil-square font-size-16px"></i>
                           </a>
-                          <a href="/book/delete/<%= books[i]._id %>" target="_self" class="hide"
+                          <a href="/admin/book/delete/<%= books[i]._id %>" target="_self" class="hide"
                             onclick="return confirm('Confirm Delete ?')">
                             <i class="bi bi-trash-fill"></i>
                           </a>
