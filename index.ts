@@ -1,5 +1,6 @@
 import express from 'express';
 import adminBookRouter from './src/routers/admin/book.router';
+import adminOrderRouter from './src/routers/admin/order.router';
 import authRouter from './src/routers/auth.router';
 import profileRouter from './src/routers/profile.router';
 import registerRouter from './src/routers/register.router';
@@ -40,6 +41,7 @@ app.use('/profile', profileRouter)
 app.use('/user', userRouter);
 app.use('/user', userProductRouter);
 app.use('/admin/book', adminBookRouter);
+app.use('/admin/order', adminOrderRouter);
 app.get('/admin/dashboard', (req, res) => {res.render('admin/dashboard')});
 
 

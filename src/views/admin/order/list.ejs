@@ -42,16 +42,16 @@
       <main id="main" class="main">
         <div class="d-flex justify-content-between col-lg-11">
           <div class="pagetitle">
-            <h1>Book</h1>
+            <h1>Order</h1>
             <nav>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-                <li class="breadcrumb-item active">Book</li>
+                <li class="breadcrumb-item active">Order</li>
               </ol>
             </nav>
           </div><!-- End Page Title -->
           <div>
-            <a href="/admin/book/add">
+            <a href="/admin/category/add">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"></path>
               </svg>
@@ -69,37 +69,40 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th id="book-title">Title</th>
-                        <th id="book-author">Author</th>
-                        <th id="book-publisher">Publisher</th>
-                        <th id="book-price">Price</th>
+                        <th id="order-id">ID</th>
+                        <th id="order-user">User</th>
+                        <th id="order-date">Order Date</th>
+                        <th id="deliver-date">Deliver Date</th>
+                        <th id="total-money">Total Money</th>
                         <th id="item-action"></th>
                       </tr>
                     </thead>
 
-                    <% for(let i=0; i < books.length; i++) { %>
+                    <% for(let i=0; i < orders.length; i++) { %>
                       <tr class="item">
-                        <td><%- i + 1 %></td>
                         <td>
-                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self">
-                            <%= books[i].name %>
+                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self">
+                            <%= orders[i]._id %>
                           </a>
                         </td>
                         <td>
-                          <%= books[i].author ? books[i].author.name : "" %>
+                          <%= orders[i].user.email || "" %>
                         </td>
                         <td>
-                          <%= books[i].publisher ? books[i].publisher.name : "" %>
+                          <%= orders[i].orderDate || "" %>
                         </td>
                         <td>
-                          <%= books[i].price ? books[i].price : "" %>
+                          <%= orders[i].deliverDate || "" %>
                         </td>
+                        <td>
+                          <%= orders[i].totalMoney || "" %>
+                        </td>
+
                         <td class="action-icon">
-                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self" class="hide">
+                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self" class="hide">
                             <i class="bi bi-pencil-square font-size-16px"></i>
                           </a>
-                          <a href="/admin/book/delete/<%= books[i]._id %>" target="_self" class="hide"
+                          <a href="/admin/order/delete/<%= orders[i]._id %>" target="_self" class="hide"
                             onclick="return confirm('Confirm Delete ?')">
                             <i class="bi bi-trash-fill"></i>
                           </a>

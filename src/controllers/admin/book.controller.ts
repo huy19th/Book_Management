@@ -31,8 +31,17 @@ class BookController {
                 publisher = new Publisher({ name: publisherName });
                 await publisher.save();
             }
+
             let id = req.params.id || '';
-            let book = await Book.findOne({ _id: id }) || new Book({});
+
+            let book;
+            if (id) {
+                book = await Book.findOne({ _id: id });
+            }
+            else {
+                book = new Book({})
+            }
+
             book.name = req.body.name;
             book.author = author._id;
             book.publisher = publisher._id;
