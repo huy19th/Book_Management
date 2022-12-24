@@ -135,9 +135,12 @@ class BookController {
     async deleteBook(req, res) {
         try {
             const book = await Book.findOne({ _id: req.params.id });
+            if (book.image) fs.unlink(`./public/${book.image}`, err => {
+                if (err) console.log(err);
+            });
             if (book) {
                 await book.remove();
-                res.redirect('admin/book');
+                res.redirect('/admin/book');
             }
             else {
                 res.render("error");
