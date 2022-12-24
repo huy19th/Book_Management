@@ -37,131 +37,149 @@
 
   <%- include('../header') %>
 
-    <%- include('../sidebar') %>
+  <%- include('./sidebar') %>
 
-      <main id="main" class="main">
+    <main id="main" class="main">
 
-        <div class="pagetitle">
-          <h1>Add Book</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-              <li class="breadcrumb-item"><a href="/admin/book">Books</a></li>
-              <li class="breadcrumb-item active">Add Book</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+      <div class="pagetitle">
+        <h1>Add Book</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/book">Books</a></li>
+            <li class="breadcrumb-item active">Add Book</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 
-        <section class="section dashboard">
-          <div class="row">
-            <div class="col-lg-11 d-flex justify-content-center">
-              <div class="row col-8">
-                <!-- Sales Card -->
-                <form method="post" enctype="multipart/form-data">
-                  <div class="row mb-3">
-                    <label for="name" class="col-sm-2 col-form-label">Title</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="name" name="name">
-                      <%- `<p class="text-danger">${error.name ? error.name : ''}` %>
-                    </div>
+      <section class="section dashboard">
+        <div class="row">
+          <div class="col-lg-11 d-flex justify-content-center">
+            <form method="post" enctype="multipart/form-data">
+              <div class="row">
+                <div class="row col-6">
+                  <div class="row mb-1">
+                    <img src="<%- book.image %>" alt="Image" style="object-fit:contain">
                   </div>
-                  <div class="row mb-3">
-                    <label for="author" class="col-sm-2 col-form-label">Author</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="author" name="author">
-                      <%- `<p class="text-danger">${error.author ? error.author : ''}` %>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="publisher" name="publisher">
-                      <%- `<p class="text-danger">${error.publisher ? error.publisher : ''}` %>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="quantity" name="quantity">
-                      <%- `<p class="text-danger">${error.quantity ? error.quantity : ''}` %>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="price" class="col-sm-2 col-form-label">Price</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="price" name="price">
-                      <%- `<p class="text-danger">${error.price ? error.price : ''}` %>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="description" class="col-sm-2 col-form-label">Description</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="description" name="description" rows="4" cols="50"></textarea>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
+                  <div class="row mb-1">
                     <label for="image" class="col-sm-2 col-form-label">Image</label>
                     <div class="col-sm-10">
                       <input type="file" class="form-control" id="image" name="image">
                     </div>
                   </div>
+                </div>
+                <div class="row col-6">
+                  <!-- Sales Card -->
+                  <div class="row mb-1">
+                    <label for="name" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="name" name="name" <%- `value="${book.name || ''}" `
+                        %>>
+                      <%- `<p class="text-danger">${error.name || ''}` %>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <label for="author" class="col-sm-2 col-form-label">Author</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="author" name="author" <%-
+                        `value="${book.author  || ''}" ` %>>
+                      <%- `<p class="text-danger">${error.author || ''}` %>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="publisher" name="publisher" <%-
+                        `value="${book.publisher || ''}" ` %>>
+                      <%- `<p class="text-danger">${error.publisher || ''}` %>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="quantity" name="quantity" <%-
+                        `value="${book.quantity || ''}" ` %>>
+                      <%- `<p class="text-danger">${error.quantity || ''}` %>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="price" name="price" <%- `value="${book.price || ''}"
+                        `%>>
+                      <%- `<p class="text-danger">${error.price || ''}` %>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <label for="description" class="col-sm-2 col-form-label">Desc</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="description" name="description" rows="4"
+                        cols="50"><%- book.description %></textarea>
+                    </div>
+                  </div>
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Category</label>
-                    <div class="col-sm-10 pt-2 ps-4 row">
-                      <% categories.forEach((item, index) => { %>
-                      <div class="form-check col-4 align-top">
-                        <input class="form-check-input" type="checkbox" name="category[]" <%- `id="category${index + 1}" value="${item._id}"` %>>
-                        <label class="form-check-label" <%- `for="category${index+1}"` %>>
-                          <%- item.name %>  
-                        </label>
+                    <%- `<p class="text-danger">${error.category || ''}` %>
+                      <div class="col-sm-10 pt-2 ps-4 row">
+                        <% categories.forEach((item, index)=> { %>
+                          <div class="form-check col-4 align-top">
+                            <input class="form-check-input" type="checkbox" name="category[]" <%-
+                              `id="category${index + 1}" value="${item._id}" ` %>
+                            <label class="form-check-label" <%- `for="category${index+1}" ` %>>
+                              <%- item.name %>
+                            </label>
+                          </div>
+                          <% }) %>
                       </div>
-                      <% }) %>
-                    </div>
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <a href="/admin/book">
+                      <button type="button" class="btn btn-secondary" href="/admin/book">Back</button>
+                    </a>
                   </div>
-                </form>
+                </div>
               </div>
-            </div><!-- End Left side columns -->
-
-            <!-- Right side columns -->
-
+            </form>
           </div>
-        </section>
+        </div><!-- End Left side columns -->
 
-      </main><!-- End #main -->
+        <!-- Right side columns -->
 
-      <!-- ======= Footer ======= -->
-      <footer id="footer" class="footer">
-        <div class="copyright">
-          &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
         </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </footer><!-- End Footer -->
+      </section>
 
-      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-          class="bi bi-arrow-up-short"></i></a>
+    </main><!-- End #main -->
 
-      <!-- Vendor JS Files -->
-      <script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
-      <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="/admin/vendor/chart.js/chart.umd.js"></script>
-      <script src="/admin/vendor/echarts/echarts.min.js"></script>
-      <script src="/admin/vendor/quill/quill.min.js"></script>
-      <script src="/admin/vendor/simple-datatables/simple-datatables.js"></script>
-      <script src="/admin/vendor/tinymce/tinymce.min.js"></script>
-      <script src="/admin/vendor/php-email-form/validate.js"></script>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </footer><!-- End Footer -->
 
-      <!-- Template Main JS File -->
-      <script src="/admin/js/main.js"></script>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/vendor/chart.js/chart.umd.js"></script>
+    <script src="/admin/vendor/echarts/echarts.min.js"></script>
+    <script src="/admin/vendor/quill/quill.min.js"></script>
+    <script src="/admin/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/admin/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/admin/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/admin/js/main.js"></script>
 
 </body>
 

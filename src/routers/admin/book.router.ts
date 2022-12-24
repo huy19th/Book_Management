@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import bookController from '../../controllers/admin/book.controller';
 import checkAuthorization from '../../middlewares/checkAuthorization';
+import validateBookProperties from '../../middlewares/validateBookProperties';
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -22,11 +23,11 @@ const router = Router();
 
 router.get('/add', checkAuthorization, bookController.showFormAddBook);
 
-router.post('/add', upload.single('image'), bookController.addBook);
+router.post('/add', upload.single('image'), validateBookProperties, bookController.saveBook);
 
 router.get('/', bookController.showList);
 
-router.post('/detail/:id', upload.single('image'), bookController.updateBook);
+router.post('/detail/:id', upload.single('image'), validateBookProperties, bookController.saveBook);
 
 router.get('/detail/:id', bookController.showBookDetail);
 
