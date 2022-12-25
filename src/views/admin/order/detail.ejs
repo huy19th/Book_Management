@@ -42,7 +42,7 @@
       <main id="main" class="main">
         <div class="d-flex justify-content-between col-lg-11">
           <div class="pagetitle">
-            <h1>Order <%- order._id %></h1>
+            <h1>Order Detail</h1>
             <nav>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
@@ -54,6 +54,15 @@
         </div>
 
         <section class="section dashboard">
+          <div class="row px-3">
+            <table>
+              <tr>
+                <td><h6>Order ID: <%- order._id %></h6></td>
+                <td>Total Money: <%- order.totalMoney %></td>
+              </tr>
+            </table>
+            
+          </div>
           <div class="row">
             <div class="col-lg-11">
               <div class="card">
@@ -62,42 +71,30 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th id="order-book">Book</th>
-                        <th id="order-quantity">Quantity</th>
-                        <th id="deliver-date">Price</th>
+                        <th id="product-image">Image</th>
+                        <th id="product-name">Book</th>
+                        <th id="product-quantity">Quantity</th>
+                        <th id="product-price">Price</th>
                       </tr>
                     </thead>
-                    <% for(let i=0; i < orders.length; i++) { %>
+                    <% order.books.forEach((item, index) => { %>
                       <tr class="item">
+                        <td><%- index + 1 %></td>
+                        <td>Image</td>
                         <td>
-                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self">
-                            <%= orders[i]._id %>
+                          <!-- <a href="/admin/order/detail/<%= item._id %>" target="_self"> -->
+                          <a href="/admin/order/detail/" target="_self">
+                            <%= item.name || "" %>
                           </a>
                         </td>
                         <td>
-                          <%= orders[i].email || "" %>
+                          <%= item.quantity || "" %>
                         </td>
                         <td>
-                          <%= orders[i].order_Date || "" %>
-                        </td>
-                        <td>
-                          <%= orders[i].deliver_Date || "" %>
-                        </td>
-                        <td>
-                          <%= orders[i].totalMoney || "" %>
-                        </td>
-
-                        <td class="action-icon">
-                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self" class="hide">
-                            <i class="bi bi-pencil-square font-size-16px"></i>
-                          </a>
-                          <a href="/admin/order/delete/<%= orders[i]._id %>" target="_self" class="hide"
-                            onclick="return confirm('Confirm Delete ?')">
-                            <i class="bi bi-trash-fill"></i>
-                          </a>
+                          <%= item.price || "" %>
                         </td>
                       </tr>
-                      <% } %>
+                      <% }) %>
                   </table>
                 </div>
               </div>

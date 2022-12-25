@@ -1290,3 +1290,8 @@ h6 {
 .form-check-label {
   font-size: 13px
 }
+
+#book-image {
+  object-fit: contain;
+  max-height: 350px
+}
