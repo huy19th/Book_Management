@@ -57,8 +57,20 @@
           <div class="row px-3">
             <table>
               <tr>
-                <td><h6>Order ID: <%- order._id %></h6></td>
+                <td><h5>Order ID: <strong><%- order._id %></strong></h5></td>
+                <td></td>
+              </tr>
+              <tr>
                 <td>Total Money: <%- order.totalMoney %></td>
+                <td>Receiver: <%- user.name %></td>
+              </tr>
+              <tr>
+                <td>Order Date: <%- order.dateOrder %></td>
+                <td>Phone: <%- user.phone %></td>
+              </tr>
+              <tr>
+                <td>Deliver Date: <%- order.dateDeliver %></td>
+                <td rowspan="2">Address: <%- user.address %></td>
               </tr>
             </table>
             
@@ -77,13 +89,12 @@
                         <th id="product-price">Price</th>
                       </tr>
                     </thead>
-                    <% order.books.forEach((item, index) => { %>
+                    <% order.detail.forEach((item, index) => { %>
                       <tr class="item">
                         <td><%- index + 1 %></td>
-                        <td>Image</td>
+                        <td><img src="<%- item.image %>" class="zoom"></td>
                         <td>
-                          <!-- <a href="/admin/order/detail/<%= item._id %>" target="_self"> -->
-                          <a href="/admin/order/detail/" target="_self">
+                          <a href="/admin/book/detail/<%- item.book %>">
                             <%= item.name || "" %>
                           </a>
                         </td>
