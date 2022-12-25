@@ -1,4 +1,4 @@
-import User from "src/models/user.model";
+import User from "../../models/user.model";
 import Order from "../../models/order.model";
 import OrderDetail from "../../models/orderdetail.model";
 import mongoose from "mongoose";
@@ -25,6 +25,10 @@ class OrderController {
     async showOrderDetail(req, res) {
         let orderId = req.params.id;
         let order = await Order.findOne({_id: orderId});
+        let user = await User.findOne({_id: order.user});
+        order['dateOrder'] = order.orderDate ? order.orderDate.toLocaleDateString() : '';
+        order['dateDeliver'] = order.deliverDate ? order.deliverDate.toLocaleDateString() : '';
+        
         const orderDetail = await OrderDetail.aggregate([
             {$lookup: {
                     from: "books",
@@ -48,22 +52,13 @@ class OrderController {
                     as: "User"
                 }}, {
                 $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$User", 0 ] }, "$$ROOT" ] } }
-            }, {$project: {_id: 0, order: 1, email: 1, orderDate: {$dateToString: {format: "%d-%m-%Y", date: "$orderDate"}}, deliverDate: {$dateToString: {format: "%d-%m-%Y", date: "$deliverDate"}}, name: 1, quantity: 1, price: 1}}, {
-            $match: {order: new mongoose.Types.ObjectId(orderId)}
+            }, {$project: {_id: 0, order: 1, email: 1, orderDate: {$dateToString: {format: "%d-%m-%Y", date: "$orderDate"}}, deliverDate: {$dateToString: {format: "%d-%m-%Y", date: "$deliverDate"}},book: 1, name: 1, quantity: 1, price: 1, image: 1}}, {
+                $match: {order: new mongoose.Types.ObjectId(orderId)}
             }
         ])
-        let books = []
-        orderDetail.forEach(item => {
-            let book = {
-                name: item.name,
-                quantity: item.quantity,
-                price: item.price
-            };
-            books.push(book);
-        })
-        order['books'] = books;
-        console.log(order)
-        res.render('admin/order/detail', {order: order});
+
+        order['detail'] = orderDetail;
+        res.render('admin/order/detail', {order: order, user: user});
     }
 
 }
