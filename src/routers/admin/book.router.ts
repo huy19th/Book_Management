@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
         cb(null, './public/sharing/img/book')
     },
     filename: function (req, file, cb) {
-        let reg = /png|jpg|jpeg|svg/;
+        let reg = /png|jpg|jpeg|svg|webp/;
         let type = file.mimetype.match(reg);
         let filename = `${file.fieldname}-${Date.now()}.${type}`;
         cb(null, filename);
