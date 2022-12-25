@@ -1,59 +1,67 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <title>Title</title>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/login/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/login/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="/login/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/login/css/style.css">
 
-<body>
-    <div class="container-flex-fluid">
-        <div class="d-flex justify-content-center">
-            <h1>Log In</h1>
-        </div>
-        <div class="d-flex justify-content-center">
-            <form method="post" class="col-4 mt-4" enctype="multipart/form-data">
-                <p class="text-success"><%- message %></p>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <div class="form-group">
-                    <p class="text-danger"><%- error %></p>
-                </div>
-                <button type="submit" class="btn btn-primary">Log In</button>
-                <a class="button google" href="/login/google">
-                    <button type="button" class="btn btn-danger">Log In With Google</button>
-                </a>
+    <title>Login #2</title>
+  </head>
+  <body>
+  
+
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" id="right-side-image"></div>
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3>Login to <strong>HLY-Books</strong></h3>
+            <p>Hope, Love, Youth</p>
+            <p class="text-success"><%- message %></p>
+            <form action="#" method="post">
+              <div class="form-group first">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="email">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Your Password" id="password" name="password">
+              </div>
+              <p class="text-danger"><%- error %></p>
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+              </div>
+              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <p class="text-center mt-3 mb-0">Don't have an account yet?</p>
+              <a href="/register" id="register">
+              <input type="button" value="Register" class="btn btn-block btn-warning mt-2">
+              </a>
             </form>
+          </div>
         </div>
-        <div class="d-flex justify-content-center my-2">
-            <a href="/register">
-                <button type="button" class="btn btn-danger">Register</button>
-            </a>
-        </div>
+      </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-
+  </div>
+    <script src="/login/js/jquery-3.3.1.min.js"></script>
+    <script src="/login/js/popper.min.js"></script>
+    <script src="/login/js/bootstrap.min.js"></script>
+    <script src="/login/js/main.js"></script>
+  </body>
 </html>

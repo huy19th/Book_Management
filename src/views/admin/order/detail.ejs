@@ -40,117 +40,68 @@
     <%- include('./sidebar') %>
 
       <main id="main" class="main">
-
-        <div class="pagetitle">
-          <h1>Book Info</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-              <li class="breadcrumb-item"><a href="/admin/book">Books</a></li>
-              <li class="breadcrumb-item active">Book Info</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+        <div class="d-flex justify-content-between col-lg-11">
+          <div class="pagetitle">
+            <h1>Order <%- order._id %></h1>
+            <nav>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/order">Orders</a></li>
+                <li class="breadcrumb-item active">Detail</li>
+              </ol>
+            </nav>
+          </div><!-- End Page Title -->
+        </div>
 
         <section class="section dashboard">
           <div class="row">
-            <div class="col-lg-11 d-flex justify-content-center">
-              <form method="post" enctype="multipart/form-data">
-                <div class="row">
-                  <div class="row col-6">
-                    <div class="row mb-1">
-                      <img src="<%- book.image %>" alt="Image" style="object-fit:contain">
-                    </div>
-                    <div class="row mb-1">
-                      <label for="image" class="col-sm-2 col-form-label">Image</label>
-                      <div class="col-sm-10">
-                        <input type="file" class="form-control" id="image" name="image">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row col-6">
-                    <!-- Sales Card -->
-                    <div class="row mb-1">
-                      <label for="name" class="col-sm-2 col-form-label">Title</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name" <%- `value="${book.name}" ` %>>
-                        <%- `<p class="text-danger">${error.name ? error.name : ''}` %>
-                      </div>
-                    </div>
-                    <div class="row mb-1">
-                      <label for="author" class="col-sm-2 col-form-label">Author</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="author" name="author" <%-
-                          `value="${book.author.name}" ` %>>
-                        <%- `<p class="text-danger">${error.author ? error.author : ''}` %>
-                      </div>
-                    </div>
-                    <div class="row mb-1">
-                      <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="publisher" name="publisher" <%-
-                          `value="${book.publisher.name}" ` %>>
-                        <%- `<p class="text-danger">${error.publisher ? error.publisher : ''}` %>
-                      </div>
-                    </div>
-                    <div class="row mb-1">
-                      <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control" id="quantity" name="quantity" <%-
-                          `value="${book.quantity}" ` %>>
-                        <%- `<p class="text-danger">${error.quantity ? error.quantity : ''}` %>
-                      </div>
-                    </div>
-                    <div class="row mb-1">
-                      <label for="price" class="col-sm-2 col-form-label">Price</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control" id="price" name="price" <%- `value="${book.price}" `
-                          %>>
-                        <%- `<p class="text-danger">${error.price ? error.price : ''}` %>
-                      </div>
-                    </div>
-                    <div class="row mb-1">
-                      <label for="description" class="col-sm-2 col-form-label">Desc</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="description" name="description" rows="4"
-                          cols="50"><%- book.description %></textarea>
-                      </div>
-                    </div>
+            <div class="col-lg-11">
+              <div class="card">
+                <div class="card-body">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th id="order-book">Book</th>
+                        <th id="order-quantity">Quantity</th>
+                        <th id="deliver-date">Price</th>
+                      </tr>
+                    </thead>
+                    <% for(let i=0; i < orders.length; i++) { %>
+                      <tr class="item">
+                        <td>
+                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self">
+                            <%= orders[i]._id %>
+                          </a>
+                        </td>
+                        <td>
+                          <%= orders[i].email || "" %>
+                        </td>
+                        <td>
+                          <%= orders[i].order_Date || "" %>
+                        </td>
+                        <td>
+                          <%= orders[i].deliver_Date || "" %>
+                        </td>
+                        <td>
+                          <%= orders[i].totalMoney || "" %>
+                        </td>
 
-                  </div>
+                        <td class="action-icon">
+                          <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self" class="hide">
+                            <i class="bi bi-pencil-square font-size-16px"></i>
+                          </a>
+                          <a href="/admin/order/delete/<%= orders[i]._id %>" target="_self" class="hide"
+                            onclick="return confirm('Confirm Delete ?')">
+                            <i class="bi bi-trash-fill"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <% } %>
+                  </table>
                 </div>
-                <div class="row">
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Category</label>
-                    <div class="col-sm-10 pt-2 ps-4 row">
-                      <% categories.forEach((item, index)=> { %>
-                        <div class="form-check col-3 align-top">
-                          <input class="form-check-input" type="checkbox" name="category[]" <%-
-                            `id="category${index + 1}" value="${item._id}" ` %>
-                          <% book.category.forEach(category=> { %>
-                            <% if (category.name===item.name) {%>
-                              checked
-                              <% }}) %>>
-                                <label class="form-check-label" <%- `for="category${index+1}" ` %>>
-                                  <%- item.name %>
-                                </label>
-                        </div>
-                        <% }) %>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="/admin/book">
-                      <button type="button" class="btn btn-secondary" href="/admin/book">Back</button>
-                    </a>
-                  </div>
-                </div>
-              </form>
+              </div>
             </div>
-          </div><!-- End Left side columns -->
-
-          <!-- Right side columns -->
-
           </div>
         </section>
 
