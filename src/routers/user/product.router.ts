@@ -8,6 +8,7 @@ userProductRouter.get('/products',product.showProductList);
 userProductRouter.get('/productDetails',product.showProductDetails);
 userProductRouter.get('/search',product.search);
 userProductRouter.get('/productDetails/:id',product.showProductDetails);
+
 export default userProductRouter;
 
 

@@ -5,4 +5,6 @@ let router = express.Router();
 
 router.get('/', orderController.showOrderList);
 
+router.get('/detail/:id', orderController.showOrderDetail);
+
 export default router;
