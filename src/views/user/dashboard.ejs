@@ -53,7 +53,7 @@
 				</div>
 			</div>
 		</div><!--/header_top-->
-		
+
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -68,15 +68,41 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="book/checkout.ejs"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="book/cart.ejs"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.ejs"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/user/getCart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li class="nav-item dropdown pe-3">
+									<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+										<i class="fa fa-lock"></i>Login
+									</a><!-- End Profile Iamge Icon -->
+
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                        <li>
+                                            <a class="dropdown-item d-flex align-items-center" href="/profile">
+                                                <i class="bi bi-person"></i>
+                                                <span>My Profile</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item d-flex align-items-center" href="/profile/change-password">
+                                                <i class="bi bi-gear"></i>
+                                                <span>Change Password</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item d-flex align-items-center" href="/profile/logout">
+                                                <i class="bi bi-box-arrow-right"></i>
+                                                <span>Sign Out</span>
+                                            </a>
+                                        </li>
+
+                                    </ul><!-- End Profile Dropdown Items -->
+                                </li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -109,7 +135,7 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-	
+
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -120,7 +146,7 @@
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
-						
+
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
@@ -146,7 +172,7 @@
 									<img src="/user/images/home/pricing.png"  class="pricing" alt="" />
 								</div>
 							</div>
-							
+
 							<div class="item">
 								<div class="col-sm-6">
 									<h1><span>HLY</span>-SHOPPER</h1>
@@ -159,9 +185,9 @@
 									<img src="/user/images/home/pricing.png" class="pricing" alt="" />
 								</div>
 							</div>
-							
+
 						</div>
-						
+
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
@@ -169,12 +195,12 @@
 							<i class="fa fa-angle-right"></i>
 						</a>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
 	</section><!--/slider-->
-	
+
 	<section>
 		<div class="container">
 			<div class="row">
@@ -222,117 +248,52 @@
 						<div class="shipping text-center"><!--shipping-->
 							<img src="/user/images/home/home_left_display.jpeg" style="width: 100%" alt="" />
 						</div><!--/shipping-->
-					
+
 					</div>
 				</div>
-				
+
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Newly Published</h2>
+						<% data.forEach((item, index) => { %>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="/user/images/home/list_img1.png" alt="" width="241" height="224" style="object-fit: contain"/>
-											<h2>$56</h2>
-											<p><a href="">Click for more details</a></p>
+											<img src="<%=item.image%>" alt="" width="241" height="250" style="object-fit: contain"/>
+											<h2><%=item.price%></h2>
+											<p><a href="/user/productDetails/<%=item._id%>">Click for more details</a></p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 								</div>
-								
+
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/user/images/home/list_img2.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
-										<h2>$56</h2>
-										<p><a href="">Click for more details</a></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/user/images/home/list_img3.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
-										<h2>$56</h2>
-										<p><a href="">Click for more details</a></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/user/images/home/list_img4.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
-										<h2>$56</h2>
-										<p><a href="">Click for more details</a></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<img src="/user/images/home/new.png" class="new" alt="" />
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/user/images/home/list_img5.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
-										<h2>$56</h2>
-										<p><a href="">Click for more details</a></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<img src="/user/images/home/sale.png" class="new" alt="" />
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/user/images/home/list_img6.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
-										<h2>$56</h2>
-										<p><a href="">Click for more details</a></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
+						<% }) %>
+
 					</div><!--features_items-->
-					
+
 					<div class="category-tab"><!--category-tab-->
 
 
 					</div><!--/category-tab-->
-					
+
 					<div class="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">recommended books</h2>
-						
+
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="item active">	
+								<div class="item active">
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book1.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
+													<img src="/user/images/home/home_recommend_book1.jpeg" alt="" width="241" height="250" style="object-fit: contain" />
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
@@ -340,12 +301,12 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book2.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
+													<img src="/user/images/home/home_recommend_book2.jpeg" alt="" width="241" height="250" style="object-fit: contain" />
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
@@ -353,27 +314,27 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book3.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
+													<img src="/user/images/home/home_recommend_book3.jpeg" alt="" width="241" height="250" style="object-fit: contain" />
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="item">	
+								<div class="item">
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book4.jpeg" alt="" width="241" height="224" style="object-fit: contain"/>
+													<img src="/user/images/home/home_recommend_book4.jpeg" alt="" width="241" height="250" style="object-fit: contain"/>
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
@@ -381,12 +342,12 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book5.jpeg" alt="" width="241" height="224" style="object-fit: contain" />
+													<img src="/user/images/home/home_recommend_book5.jpeg" alt="" width="241" height="250" style="object-fit: contain" />
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
@@ -394,12 +355,12 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="/user/images/home/home_recommend_book6.jpeg" alt="" width="241" height="224" style="object-fit: contain"/>
+													<img src="/user/images/home/home_recommend_book6.jpeg" alt="" width="241" height="250" style="object-fit: contain"/>
 													<h2>$56</h2>
 													<p><a href="">Click for more details</a></p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
-												
+
 											</div>
 										</div>
 									</div>
@@ -410,15 +371,15 @@
 							  </a>
 							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
 								<i class="fa fa-angle-right"></i>
-							  </a>			
+							  </a>
 						</div>
 					</div><!--/recommended_items-->
-					
+
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">
@@ -491,7 +452,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -553,11 +514,11 @@
 							</form>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
@@ -566,7 +527,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</footer><!--/Footer-->
 
 
@@ -576,5 +537,18 @@
 	<script src="/user/js/price-range.js"></script>
     <script src="/user/js/jquery.prettyPhoto.js"></script>
     <script src="/user/js/main.js"></script>
+
+    <script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/vendor/chart.js/chart.umd.js"></script>
+    <script src="/admin/vendor/echarts/echarts.min.js"></script>
+    <script src="/admin/vendor/quill/quill.min.js"></script>
+    <script src="/admin/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/admin/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/admin/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/admin/js/main.js"></script>
+
 </body>
 </html>

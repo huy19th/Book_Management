@@ -94,10 +94,8 @@
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="/user/products">Products</a></li>
-										<li><a href="/user/productDetails" class="active">Product Details</a></li>
                                     </ul>
                                 </li>
-								<li><a href="404.ejs">404</a></li>
 							</ul>
 						</div>
 					</div>
@@ -156,7 +154,7 @@
 						</div><!--/category-products-->
 
 						<div class="shipping text-center"><!--shipping-->
-							<img src="/user/images/home/home_left_display.jpeg" alt="" />
+							<img style="width: 100%" src="/user/images/home/home_left_display.jpeg" alt="" />
 						</div><!--/shipping-->
 						
 					</div>
@@ -167,7 +165,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="/user/images/home/shop_politics.jpeg" alt="" />
+								<img src="<%=data.image%>" style="height: 80%" alt="" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -175,19 +173,19 @@
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href=""><img src="/user/images/shop/shop_politics.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_politics2.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_politics3.jpeg" alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics.jpeg" style="width: 27%" alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics2.jpeg" style="width: 27% "alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics3.jpeg"style="width: 27% "alt=""></a>
 										</div>
 										<div class="item">
-										  <a href=""><img src="/user/images/shop/shop_politics4.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_politics5.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_politics6.jpeg" alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics4.jpeg" style="width: 27%"alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics5.jpeg" style="width: 27%"alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_politics6.jpeg" style="width: 27%"alt=""></a>
 										</div>
 										<div class="item">
-										  <a href=""><img src="/user/images/shop/shop_foreign1.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_foreign2.jpeg" alt=""></a>
-										  <a href=""><img src="/user/images/shop/shop_foreign3.jpeg" alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_foreign1.jpeg" style="width: 27%" alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_foreign2.jpeg" style="width: 27%"alt=""></a>
+										  <a href=""><img src="/user/images/shop/shop_foreign3.jpeg"style="width: 27%" alt=""></a>
 										</div>
 										
 									</div>
@@ -209,15 +207,18 @@
 								<img src="/user/images/product-details/rating.png" alt="" />
 								<span>
 									<span><%=data.price%></span>
-									<label><%=data.quantity%></label>
-									<button type="button" class="btn btn-fefault cart">
+									<a href="#" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</a>
 								</span>
 								<p><b>Author: </b><%=data?.author?.name%></p>
 								<p><b>Publisher: </b><%=data?.publisher?.name%></p>
-								<p><b>Category: </b><%=data?.category?.name%></p>
+								<p><b>Category:</b>
+									<%data?.category?.forEach(item => { %>
+										<%=item.name%>
+									<% }) %></p>
+								<p><b>Quantity: </b><%=data.quantity%></p>
 								<p><b>Description: </b>New</p>
 								<p><b>Availability: </b>In Stock</p>
 								<p><b>Store Name:</b> HLY-Books</p>
@@ -233,7 +234,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="/user/images/home/gallery1.jpg" alt="" />
+												<img src="/user/images/home/gallery1.jpg" style="width:100%;" alt="" />
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
 												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -245,7 +246,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="/user/images/home/gallery2.jpg" alt="" />
+												<img src="/user/images/home/gallery2.jpg" style="width: " alt="" />
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
 												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
