@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 import path from 'path'
 import userRouter from './src/routers/user/dashboard.router'
 import userProductRouter from './src/routers/user/product.router';
+import cartRouter from './src/routers/user/cart.router'
 
 const PORT = 3000;
 const app = express();
@@ -39,6 +40,7 @@ app.use(checkAuthentication);
 
 app.use('/profile', profileRouter)
 app.use('/user', userRouter);
+app.use('/user',cartRouter);
 app.use('/user', userProductRouter);
 app.use('/admin/book', adminBookRouter);
 app.use('/admin/order', adminOrderRouter);
