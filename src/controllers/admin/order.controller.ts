@@ -56,7 +56,6 @@ class OrderController {
                 $match: {order: new mongoose.Types.ObjectId(orderId)}
             }
         ])
-
         order['detail'] = orderDetail;
         res.render('admin/order/detail', {order: order, user: user});
     }

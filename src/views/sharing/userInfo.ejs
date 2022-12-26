@@ -2,24 +2,23 @@
 <html lang="en">
 
 <head>
-    <title>User Info</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/user-info/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/user-info/css/style.css">    
 </head>
 
 <body>
     <div class="container-flex-fluid">
-        <div class="d-flex justify-content-center">
-            <h1>User Info</h1>
+        <div class="d-flex justify-content-center pt-3">
+            <h1 class="text-white">User Info</h1>
         </div>
         <div class="d-flex justify-content-center">
-            <form method="post" class="col-4 mt-4" enctype="multipart/form-data">
-                <p class="text-success"><%- message %></p>
+            <form method="post" class="col-4 pt-3 pb-4 bg-white rounded" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" name="email" value="<%- user.email %>" readonly>
@@ -39,9 +38,13 @@
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" value="<%- user.address %>">
                     <p class="text-danger"><%- error.address ? error.address : ''%></p>
+                    <p class="text-success"><%- message %></p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-block btn-primary">Save</button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="<%- link %>" class="btn btn-block btn-warning mt-2">Back</a>
                 </div>
             </form>
         </div>
