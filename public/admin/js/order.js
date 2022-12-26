@@ -3,6 +3,7 @@ const ordersByYear = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('orders').innerHTML = '| This Year'
         })
 }
 
@@ -11,6 +12,7 @@ const ordersByMonth = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('orders').innerHTML = '| This Month'
         })
 }
 
@@ -19,5 +21,6 @@ const todayOrders = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('orders').innerHTML = '| Today'
         })
 }

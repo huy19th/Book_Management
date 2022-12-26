@@ -12,35 +12,40 @@ const searchBook = (value) => {
         }
     }).then(res => {
         let data = res.data;
-        console.log(data)
-        let html = '';
-        let pag = ''
-        data.books.forEach((book, index) => {
-            html += '<tr>'
-            html += `<td>${index+1}</td>`
-            html += `<td>${book.name}</td>`
-            html += `<td>${book.author.name}</td>`
-            html += `<td>${book.publisher.name}</td>`
-            html += `<td>${book.price}</td>`
-            html += `<td></td>`
-            html += '</tr>'
-        })
-        pag += '<nav aria-label="Page navigation example">';
-        pag += '<ul class="pagination">';
-        pag += `<li class='${+data.page-1===0 ? "page-item disabled" : "page-item"}'><button class="page-link" type="button"
+        console.log(data.sum)
+        if (data.sum !== 0) {
+            let html = '';
+            let pag = ''
+            data.books.forEach((book, index) => {
+                html += '<tr>'
+                html += `<td>${index+1}</td>`
+                html += `<td>${book.name}</td>`
+                html += `<td>${book.author.name}</td>`
+                html += `<td>${book.publisher.name}</td>`
+                html += `<td>${book.price}</td>`
+                html += `<td></td>`
+                html += '</tr>'
+            })
+            pag += '<nav aria-label="Page navigation example">';
+            pag += '<ul class="pagination">';
+            pag += `<li class='${+data.page-1===0 ? "page-item disabled" : "page-item"}'><button class="page-link" type="button"
                                                                                               onclick="searchBook(${+data.page}-1)">Previous</button>
         </li>`
-        data.way.forEach(i => {
-            pag += `<li class='${i === +data.page ? "page-item active" : "page-item"}'
+            data.way.forEach(i => {
+                pag += `<li class='${i === +data.page ? "page-item active" : "page-item"}'
             ><button class="page-link" type="button" onclick="searchBook(${i})">
                 ${i}</button></li>`
-        })
-        pag += `<li class='${+data.page === data.end ? "page-item disabled" : "page-item"}'><button class="page-link" type="button" onclick="searchBook(${+data.page}+1)">Next</button>
+            })
+            pag += `<li class='${+data.page === data.end ? "page-item disabled" : "page-item"}'><button class="page-link" type="button" onclick="searchBook(${+data.page}+1)">Next</button>
         </li>`
-        pag += '</ul>';
-        pag += '</nav>';
-        document.getElementById('tableBody').innerHTML = html;
-        document.getElementById('pagination').innerHTML = pag
+            pag += '</ul>';
+            pag += '</nav>';
+            document.getElementById('tableBody').innerHTML = html;
+            document.getElementById('pagination').innerHTML = pag
+        } else {
+            document.getElementById('tableBody').innerHTML = '';
+            document.getElementById('pagination').innerHTML = '';
+        }
     })
 }
 

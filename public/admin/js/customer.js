@@ -3,6 +3,7 @@ const customersByYear = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalCustomers').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('customers').innerHTML = '| This Year'
         })
 }
 
@@ -11,6 +12,7 @@ const customersByMonth = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalCustomers').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('customers').innerHTML = '| This Month'
         })
 }
 
@@ -19,5 +21,6 @@ const todayCustomers = () => {
         .then(res => {
             let data = res.data;
             document.getElementById('totalCustomers').innerHTML = (data.length === 0) ? 0 : data[0].total;
+            document.getElementById('customers').innerHTML = '| Today'
         })
 }

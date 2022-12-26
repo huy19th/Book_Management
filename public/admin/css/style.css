@@ -1283,10 +1283,24 @@ h6 {
   width: 15%
 }
 
-#book-action {
+#item-action {
   width: 10%;
 }
 
 .form-check-label {
   font-size: 13px
+}
+
+#book-image {
+  object-fit: contain;
+  max-height: 350px
+}
+
+.zoom {
+  transition: 0.25s all ease-in-out;
+  height: 75px
+}
+
+.zoom:hover {
+  transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

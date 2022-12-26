@@ -8,7 +8,8 @@ const orderSchema = new Schema({
         required: [true, 'User undefined'],
         ref: 'User'
     },
-    totalMoney: Number
+    totalMoney: Number,
+    onCart: Boolean
 })
 
 const Order = model('Order', orderSchema);

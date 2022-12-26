@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import Book from "./book.model";
 
 const orderDetailSchema = new Schema({
     order: {
@@ -7,7 +8,7 @@ const orderDetailSchema = new Schema({
         ref: 'Order'
     },
     book: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId ,
         required: [true, `There is no book in this order detail`],
         ref: 'Book'
     },

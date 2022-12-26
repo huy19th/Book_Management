@@ -70,7 +70,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="checkout.ejs"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.ejs"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="/user/getCart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="../login.ejs"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
@@ -98,10 +98,8 @@
                             <li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/user/products" class="active">Products</a></li>
-                                    <li><a href="/user/productDetails">Product Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="404.ejs">404</a></li>
                         </ul>
                     </div>
                 </div>
@@ -117,7 +115,7 @@
 
 <section id="advertisement">
     <div class="container">
-        <img src="/user/images/shop/shop_display2.jpeg" alt="" height="180"/>
+        <img src="/user/images/shop/shop_display2.jpeg" alt="" height="240"/>
     </div>
 </section>
 
@@ -166,23 +164,13 @@
                     </div><!--/category-products-->
 
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="/user/images/shop/shop_display1.jpeg" alt=""/>
+                        <img src="/user/images/shop/shop_display1.jpeg" width="100%" alt=""/>
                     </div><!--/shipping-->
 
                 </div>
             </div>
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li class="dropdown"><a href="#" class="active">Filter by<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="#">Price</a></li>
-                                    <li><a href="#">Catergory</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                     <h2 class="title text-center">Books List</h2>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
@@ -377,8 +365,8 @@
                                             <h2><%= item.price %></h2>
                                             <p><%=item.name%></p>
                                             <p><a href="/user/productDetails/<%=item._id%>">Click for more detail</a></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                                to cart</a>
+                                            <a onclick="addToCart('<%=item._id%>')" href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                                to cart yghjjhvvkjjjk</a>
                                         </div>
                                     </div>
                                 </div>
@@ -557,6 +545,7 @@
 </footer><!--/Footer-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+<script src="/user/js/cart.js" ></script>
 <script src="/user/js/my.js"></script>
 <script src="/user/js/jquery.js"></script>
 <script src="/user/js/price-range.js"></script>

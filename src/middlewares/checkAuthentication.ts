@@ -15,7 +15,6 @@ const checkAuthentication = (req, res, next) => {
         if (!user) {
             return res.redirect('/login');
         }
-        console.log(decoded)
         req.decoded = decoded;
         next();
     })
