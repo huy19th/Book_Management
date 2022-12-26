@@ -27,9 +27,7 @@ class AuthController {
         }
 
         bcrypt.compare(req.body.password, user.password, (err, result) => {
-            console.log('checking password done')
             if (err) throw err;
-            console.log('checking password done')
             if (result) {
                 let payload = {
                     _id: user._id,
