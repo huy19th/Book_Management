@@ -33,7 +33,9 @@
 
 </head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"
+  integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <body>
 
@@ -54,33 +56,47 @@
           </div><!-- End Page Title -->
           <div>
             <a href="/admin/book/add">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z">
+                </path>
               </svg>
             </a>
           </div>
         </div>
 
-<!--        Lọc và search tương đối-->
-
-        <input type="text" name="searchByKeyword" id="searchByKeyword" style="display: inline-block" onkeyup="searchBook()"><br>
-
-        <select id="searchByCategory" style="display: inline-block" onchange="searchBook()">
-          <option value="Thể loại">Thể loại</option>
-          <% categories.forEach(category => { %>
-            <option value="<%= category.name %>"><%= category.name %></option>
-          <% }) %>
-        </select>
-
-        <select name="" id="searchByPrice" onchange="searchBook()">
-          <option value="Mức giá">Mức giá</option>
-          <option value="0-50000">0 - 50000</option>
-          <option value="50000-100000">50000 - 100000</option>
-          <option value="100000-200000">100000 - 200000</option>
-          <option value="200000+">200000+</option>
-        </select>
-
-<!--        End-->
+        <!--        Lọc và search tương đối-->
+        <div class="d-flex justify-content-center pb-4">
+          <div class="input-group-btn search-btn" style="display:inline">
+            <button class="btn btn-primary rounded-left" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <div class="col-3 form-group px-0">
+            <input type="text" name="searchByKeyword" id="searchByKeyword" class="form-control" placeholder="Search book by title" onkeyup="searchBook()">
+          </div>
+          <div class="col-2 form-group px-0">
+            <select id="searchByCategory" class="form-control" onchange="searchBook()">
+              <option value="Thể loại">Category</option>
+              <% categories.forEach(category=> { %>
+                <option value="<%= category.name %>">
+                  <%= category.name %>
+                </option>
+                <% }) %>
+            </select>
+          </div>
+          <div class="col-2 form-group px-0">
+            <select name="" id="searchByPrice" class="form-control" onchange="searchBook()">
+              <option value="Mức giá">Price</option>
+              <option value="0-50000">0 - 50000</option>
+              <option value="50000-100000">50000 - 100000</option>
+              <option value="100000-200000">100000 - 200000</option>
+              <option value="200000+">200000+</option>
+            </select>
+          </div>
+        </div>
+        <!--        End-->
 
         <section class="section dashboard">
           <div class="row">
@@ -100,45 +116,49 @@
                     </thead>
 
                     <tbody id="tableBody">
-                    <% for(let i=0; i < books.length; i++) { %>
-                      <tr class="item">
-                        <td><%- i + 1 %></td>
-                        <td>
-                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self">
-                            <%= books[i].name %>
-                          </a>
-                        </td>
-                        <td>
-                          <%= books[i].author ? books[i].author.name : "" %>
-                        </td>
-                        <td>
-                          <%= books[i].publisher ? books[i].publisher.name : "" %>
-                        </td>
-                        <td>
-                          <%= books[i].price ? books[i].price : "" %>
-                        </td>
-                        <td class="action-icon">
-                          <a href="/admin/book/detail/<%= books[i]._id %>" target="_self" class="hide">
-                            <i class="bi bi-pencil-square font-size-16px"></i>
-                          </a>
-                          <a href="/admin/book/delete/<%= books[i]._id %>" target="_self" class="hide"
-                             onclick="return confirm('Confirm Delete ?')">
-                            <i class="bi bi-trash-fill"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    <% } %>
+                      <% for(let i=0; i < books.length; i++) { %>
+                        <tr class="item">
+                          <td><%- i + 1 %></td>
+                          <td>
+                            <a href="/admin/book/detail/<%= books[i]._id %>" target="_self">
+                              <%= books[i].name %>
+                            </a>
+                          </td>
+                          <td>
+                            <%= books[i].author ? books[i].author.name : "" %>
+                          </td>
+                          <td>
+                            <%= books[i].publisher ? books[i].publisher.name : "" %>
+                          </td>
+                          <td>
+                            <%= books[i].price ? books[i].price : "" %>
+                          </td>
+                          <td class="action-icon">
+                            <a href="/admin/book/detail/<%= books[i]._id %>" target="_self" class="hide">
+                              <i class="bi bi-pencil-square font-size-16px"></i>
+                            </a>
+                            <a href="/admin/book/delete/<%= books[i]._id %>" target="_self" class="hide"
+                              onclick="return confirm('Confirm Delete ?')">
+                              <i class="bi bi-trash-fill"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <% } %>
                     </tbody>
                   </table>
-                  <div id="pagination">
+                  <div id="pagination" class="d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                       <ul class="pagination">
-                        <li class='<%= (+page-1 === 0) ? "page-item disabled" : "page-item" %>'><a class="page-link" href="/admin/book/<%= +page-1 %>">Previous</a></li>
+                        <li class='<%= (+page-1 === 0) ? "page-item disabled" : "page-item" %>'><a class="page-link"
+                            href="/admin/book/<%= +page-1 %>">Previous</a></li>
                         <% for (let i of way) { %>
-                          <li class='<%= (i === +page) ? "page-item active" : "page-item"%>'
-                          ><a class="page-link" href="/admin/book/<%= i %>"><%=  i %></a></li>
-                        <% } %>
-                        <li class='<%= (+page === end) ? "page-item disabled" : "page-item" %>'><a class="page-link" href="/admin/book/<%= +page+1 %>">Next</a></li>
+                          <li class='<%= (i === +page) ? "page-item active" : "page-item"%>'><a class="page-link"
+                              href="/admin/book/<%= i %>">
+                              <%= i %>
+                            </a></li>
+                          <% } %>
+                            <li class='<%= (+page === end) ? "page-item disabled" : "page-item" %>'><a class="page-link"
+                                href="/admin/book/<%= +page+1 %>">Next</a></li>
                       </ul>
                     </nav>
                   </div>
@@ -168,7 +188,7 @@
           class="bi bi-arrow-up-short"></i></a>
 
       <!-- Vendor JS Files -->
-  <script src="/admin/js/filter.js"></script>
+      <script src="/admin/js/filter.js"></script>
       <script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
       <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="/admin/vendor/chart.js/chart.umd.js"></script>
@@ -181,4 +201,5 @@
       <!-- Template Main JS File -->
       <script src="/admin/js/main.js"></script>
 </body>
+
 </html>
