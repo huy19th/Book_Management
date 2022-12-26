@@ -14,10 +14,9 @@ const storage = multer.diskStorage({
         let filename = `${file.fieldname}-${Date.now()}.${type}`;
         cb(null, filename);
     }
-})
+});
 
-
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage });
 
 const router = Router();
 
