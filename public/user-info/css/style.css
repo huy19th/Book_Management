@@ -1,0 +1,24 @@
+hmtl {
+    height: 100%
+}
+body {
+    height: 100%;
+    background-image: url("/user-info/img/bg-1.jpg");
+    background-size: cover;
+    background-position: center bottom;
+}
+.container-flex-fluid {
+    height: 100%;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #fb771a;
+    border-color: #fb771a;
+}
+
+.btn-primary::hover {
+    color: #fff;
+    background-color: #de5e04;
+    border-color: #d25904;
+}

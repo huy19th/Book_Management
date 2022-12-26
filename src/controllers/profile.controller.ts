@@ -13,11 +13,11 @@ class ProfileController {
                 error[field] = item[field].message
             }
         })
+        let link = req.decoded.role == 'admin' ? '/admin/dashboard' : '/user/dashboard';
         let user = await User.findOne({_id: req.decoded._id});
-        res.render('sharing/userInfo', {user: user, error: error, message: message});
+        res.render('sharing/userInfo', {user: user, error: error, message: message, link: link});
     }
     async saveInfo(req, res) {
-        console.log(req.body);
         let user = await User.findOne({_id: req.decoded._id});
         let {email, name, phone, address} = req.body;
         user.name = name;
@@ -32,18 +32,19 @@ class ProfileController {
             req.flash('error', err.errors);
         }
         finally {
-            res.redirect('/user/change-info');
+            res.redirect('/profile');
         }
     }
     async showFormChangePassword(req, res) {
         let message = req.flash('message');
         let error = req.flash('error');
-        res.render('sharing/changePassword', {message: message, error: error});
+        let link = req.decoded.role == 'admin' ? '/admin/dashboard' : '/user/dashboard';
+        res.render('sharing/changePassword', {message: message, error: error, link: link});
     }
     async confirmCurrentPassword(req, res) {
         let user = await User.findOne({_id: req.decoded._id});
         let currentPassword = req.params.currentPassword;
-        console.log(currentPassword);
+        console.log(currentPassword)
         bcrypt.compare(currentPassword, user.password, (err, result) => {
             if (err) throw err;
             if (result) {
@@ -58,7 +59,7 @@ class ProfileController {
             user.password = hash;
             await user.save();
             req.flash('message', 'Changed password succesfully')
-            res.redirect('/user/change-password');
+            res.redirect('/profile/change-password');
         });
         }
         catch (err) {
