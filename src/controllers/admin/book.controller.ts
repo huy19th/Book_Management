@@ -4,6 +4,7 @@ import Author from "../../models/author.model";
 import Publisher from "../../models/publisher.model";
 import Category from "../../models/category.model";
 import multer from 'multer';
+import lodash from 'lodash';
 
 const upload = multer();
 
@@ -65,8 +66,30 @@ class BookController {
     }
     async showList(req, res) {
         try {
-            const books = await Book.find().populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"});
-            res.render("admin/book/list", { books: books});
+            const categories = await Category.find({})
+            const numberOfBooks = await Book.aggregate([
+                {$count: "total"}
+                ]
+            );
+            let sum = numberOfBooks[0].total;
+            let arr = [];
+            let perPage = 6;
+            let end = Math.ceil(sum / perPage);
+            for (let i = 1; i <= end; i++) {
+                arr.push(i)
+            }
+            let newArr = lodash.chunk(arr, 3);
+            console.log(newArr)
+            for (let i = 0; i < newArr.length; i++) {
+                for (let j = 0; j < newArr[i].length; j++) {
+                    if (+req.params.page === newArr[i][j]) {
+                        let page = req.params.page;
+                        let begin = (page - 1) * perPage;
+                        const books = await Book.find().limit(perPage).skip(begin);
+                        res.render('admin/book/list', {books: books, way: newArr[i], page: page, end: end, categories: categories});
+                    }
+                }
+            }
         } catch {
             res.render("error");
         }
