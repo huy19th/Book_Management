@@ -98,12 +98,38 @@ app.get('/admin/reveneu/today', async (req, res) => {
 
 app.get('/admin/orders/thisyear', async (req, res) => {
     let year = new Date().getFullYear();
-    const data = await Order.aggregate([
+    const dataCurrent = await Order.aggregate([
         {$project: {year: {$year: "$orderDate"}, totalMoney: 1}},
         {$match: {year: +year}},
         {$count: "total"}
     ])
-    res.status(200).json(data);
+    const dataLastYear = await Order.aggregate([
+        {$project: {year: {$year: "$orderDate"}, totalMoney: 1}},
+        {$match: {year: +year-1}},
+        {$count: "total"}
+    ])
+    if (dataCurrent[0].total > dataLastYear[0].total) {
+        let number = (+dataCurrent[0].total - +dataLastYear[0].total)/(+dataLastYear[0].total)*100;
+        res.status(200).json({
+            dataCurrent: dataCurrent[0].total,
+            number: number,
+            message: 'increase'
+        });
+    }
+    if (dataCurrent[0].total < dataLastYear[0].total) {
+        let number = Math.abs((+dataCurrent[0].total - +dataLastYear[0].total)/(+dataLastYear[0].total)*100).toFixed(2);
+        res.status(200).json({
+            dataCurrent: dataCurrent[0].total,
+            number: number,
+            message: 'decrease'
+        });
+    }
+    if (dataCurrent[0].total === dataLastYear[0].total) {
+        res.status(200).json({
+            dataCurrent: dataCurrent[0].total,
+            message: 'equal'
+        });
+    }
 })
 
 app.get('/admin/orders/thismonth', async (req, res) => {
@@ -119,17 +145,28 @@ app.get('/admin/orders/thismonth', async (req, res) => {
         {$match: {month: +month-1, year: +year}},
         {$count: "total"}
     ])
-    console.log(dataCurrent[0].total)
-    console.log(dataLastMonth[0].total)
     if (dataCurrent[0].total > dataLastMonth[0].total) {
         let number = (+dataCurrent[0].total - +dataLastMonth[0].total)/(+dataLastMonth[0].total)*100;
         res.status(200).json({
-            dataCurrent: dataCurrent,
+            dataCurrent: dataCurrent[0].total,
             number: number,
             message: 'increase'
         });
     }
-    // res.status(200).json(data);
+    if (dataCurrent[0].total < dataLastMonth[0].total) {
+        let number = Math.abs((+dataCurrent[0].total - +dataLastMonth[0].total)/(+dataLastMonth[0].total)*100).toFixed(2);
+        res.status(200).json({
+            dataCurrent: dataCurrent[0].total,
+            number: number,
+            message: 'decrease'
+        });
+    }
+    if (dataCurrent[0].total === dataLastMonth[0].total) {
+        res.status(200).json({
+            dataCurrent: dataCurrent[0].total,
+            message: 'equal'
+        });
+    }
 })
 
 app.get('/admin/orders/today', async (req, res) => {
@@ -141,7 +178,6 @@ app.get('/admin/orders/today', async (req, res) => {
         {$match: {date: +date, month: +month, year: +year}},
         {$count: "total"}
     ])
-
     res.status(200).json(data);
 })
 
