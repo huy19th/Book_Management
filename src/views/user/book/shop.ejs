@@ -71,7 +71,33 @@
                             <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="checkout.ejs"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="/user/getCart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="../login.ejs"><i class="fa fa-lock"></i> Login</a></li>
+                            <li class="nav-item dropdown pe-3">
+                                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                    <i class="fa fa-lock"></i>Login
+                                </a><!-- End Profile Iamge Icon -->
+
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="/profile">
+                                            <i class="bi bi-person"></i>
+                                            <span>My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="/profile/change-password">
+                                            <i class="bi bi-gear"></i>
+                                            <span>Change Password</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="/profile/logout">
+                                            <i class="bi bi-box-arrow-right"></i>
+                                            <span>Sign Out</span>
+                                        </a>
+                                    </li>
+
+                                </ul><!-- End Profile Dropdown Items -->
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -172,208 +198,24 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Books List</h2>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>21 bài học cho thế kỷ 21</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics2.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Lính trơn</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics3.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>18 phát minh vĩ đại</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics4.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Lược sử tôn giáo</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                                <img src="/user/images/home/new.png" class="new" alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics5.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Biết ăn biết nói chẳng lo thua</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                                <img src="/user/images/home/sale.png" class="new" alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_politics6.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Từ điển Việt Nam</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign1.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Tiếng núi</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign2.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Làm sao dừng lại thời gian</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign3.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Những chuyện tình thế kỷ mới</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign4.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Tiếng gió</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign5.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Tiếng trăng</p>
-                                    <p><a href="">Click for more details</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="/user/images/shop/shop_foreign6.jpeg" alt="" width="241" height="224"
-                                         style="object-fit: contain"/>
-                                    <h2>$56</h2>
-                                    <p>Cô gái mặc váy tím</p>
-                                    <p><a href="">Click for more detail</a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div id="list-products">
                         <% data.products.forEach((item, index) => { %>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/user/images/shop/<%= item.image %>" alt="" width="241" height="224" style="object-fit: contain"/>
+                                            <img src="<%= item.image %>" alt="" width="241" height="250" style="object-fit: contain"/>
                                             <h2><%= item.price %></h2>
-                                            <p><%=item.name%></p>
+                                            <p style="max-width: 200px; display:inline-block ;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;"><%=item.name%></p>
                                             <p><a href="/user/productDetails/<%=item._id%>">Click for more detail</a></p>
                                             <a onclick="addToCart('<%=item._id%>')" href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                                to cart yghjjhvvkjjjk</a>
+                                                to cart</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         <% }) %>
                     </div>
-
                 </div>
 
             </div><!--features_items-->
@@ -553,5 +395,14 @@
 <script src="/user/js/bootstrap.min.js"></script>
 <script src="/user/js/jquery.prettyPhoto.js"></script>
 <script src="/user/js/main.js"></script>
+
+<script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/vendor/chart.js/chart.umd.js"></script>
+<script src="/admin/vendor/echarts/echarts.min.js"></script>
+<script src="/admin/vendor/quill/quill.min.js"></script>
+<script src="/admin/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/admin/vendor/tinymce/tinymce.min.js"></script>
+<script src="/admin/vendor/php-email-form/validate.js"></script>
 </body>
 </html>

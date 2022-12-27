@@ -68,7 +68,33 @@
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="checkout.ejs"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.ejs" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="../login.ejs"><i class="fa fa-lock"></i> Login</a></li>
+								<li class="nav-item dropdown pe-3">
+									<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+										<i class="fa fa-lock"></i>Login
+									</a><!-- End Profile Iamge Icon -->
+
+									<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+										<li>
+											<a class="dropdown-item d-flex align-items-center" href="/profile">
+												<i class="bi bi-person"></i>
+												<span>My Profile</span>
+											</a>
+										</li>
+										<li>
+											<a class="dropdown-item d-flex align-items-center" href="/profile/change-password">
+												<i class="bi bi-gear"></i>
+												<span>Change Password</span>
+											</a>
+										</li>
+										<li>
+											<a class="dropdown-item d-flex align-items-center" href="/profile/logout">
+												<i class="bi bi-box-arrow-right"></i>
+												<span>Sign Out</span>
+											</a>
+										</li>
+
+									</ul><!-- End Profile Dropdown Items -->
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -121,8 +147,8 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
+							<td class="image" style="width: 260px;">Item</td>
+							<td class="description">Name</td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
@@ -133,7 +159,7 @@
 					<%detail.forEach(item=>{%>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="/user/images/shop/shop_foreign1.jpeg" alt=""></a>
+								<a href=""><img style="width: 40%" src="<%=item.book.image%>" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href=""><%=item.book?.name%></a></h4>
@@ -339,5 +365,14 @@
 	<script src="/user/js/jquery.scrollUp.min.js"></script>
     <script src="/user/js/jquery.prettyPhoto.js"></script>
     <script src="/user/js/main.js"></script>
+
+	<script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
+	<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/admin/vendor/chart.js/chart.umd.js"></script>
+	<script src="/admin/vendor/echarts/echarts.min.js"></script>
+	<script src="/admin/vendor/quill/quill.min.js"></script>
+	<script src="/admin/vendor/simple-datatables/simple-datatables.js"></script>
+	<script src="/admin/vendor/tinymce/tinymce.min.js"></script>
+	<script src="/admin/vendor/php-email-form/validate.js"></script>
 </body>
 </html>
