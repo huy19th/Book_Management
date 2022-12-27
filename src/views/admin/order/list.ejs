@@ -33,6 +33,9 @@
 
 </head>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <body>
 
   <%- include('../header') %>
@@ -52,6 +55,22 @@
           </div><!-- End Page Title -->
         </div>
 
+        <div>
+          <div class="input-group mb-3 w-25">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Email</span>
+            </div>
+            <input type="text" id="searchByUser" onkeyup="showOrdersFunction()" class="form-control" placeholder="Email" name="email" aria-label="Email" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3 w-25">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Date</span>
+            </div>
+            <input type="date" name="date" id="searchByDate" onchange="showOrdersFunction()" class="form-control" aria-label="Email" aria-describedby="basic-addon1">
+          </div>
+          <button type="button" class="btn btn-danger mb-3" onclick="myFunction(<%= +page %>)">Delete</button>
+        </div>
+
         <section class="section dashboard">
           <div class="row">
             <div class="col-lg-11">
@@ -68,9 +87,9 @@
                         <th id="item-action"></th>
                       </tr>
                     </thead>
-
+                    <tbody id="tableBody">
                     <% for(let i=0; i < orders.length; i++) { %>
-                      <tr class="item">
+                      <tr class="item" id="<%= orders[i]._id %>">
                         <td>
                           <a href="/admin/order/detail/<%= orders[i]._id %>" target="_self">
                             <%= orders[i]._id %>
@@ -94,13 +113,31 @@
                             <i class="bi bi-pencil-square font-size-16px"></i>
                           </a>
                           <a href="/admin/order/delete/<%= orders[i]._id %>" target="_self" class="hide"
-                            onclick="return confirm('Confirm Delete ?')">
+                             onclick="return confirm('Confirm Delete ?')">
                             <i class="bi bi-trash-fill"></i>
                           </a>
                         </td>
                       </tr>
-                      <% } %>
+                    <% } %>
+                    </tbody>
                   </table>
+
+                  <div id="actionDelete">
+
+                  </div>
+
+                  <div id="pagination" class="mt-3">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class='<%= (+page-1 === 0) ? "page-item disabled" : "page-item" %>'><a class="page-link" href="/admin/order/<%= +page-1 %>">Previous</a></li>
+                        <% for (let i of way) { %>
+                          <li class='<%= (+i === +page) ? "page-item active" : "page-item"%>'
+                          ><a class="page-link" href="/admin/order/<%= +i %>"><%=  +i %></a></li>
+                        <% } %>
+                        <li class='<%= (+page === +end) ? "page-item disabled" : "page-item" %>'><a class="page-link" href="/admin/order/<%= +page+1 %>">Next</a></li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,6 +164,7 @@
           class="bi bi-arrow-up-short"></i></a>
 
       <!-- Vendor JS Files -->
+      <script src="/admin/js/order/search.js"></script>
       <script src="/admin/vendor/apexcharts/apexcharts.min.js"></script>
       <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="/admin/vendor/chart.js/chart.umd.js"></script>
@@ -139,6 +177,8 @@
       <!-- Template Main JS File -->
       <script src="/admin/js/main.js"></script>
 
+      <!-- Delete -->
+      <script src="/admin/js/order/delete.js"></script>
 </body>
 
 </html>

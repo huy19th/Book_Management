@@ -87,7 +87,7 @@ class BookController {
                     if (+req.params.page === newArr[i][j]) {
                         let page = req.params.page;
                         let begin = (page - 1) * perPage;
-                        const books = await Book.find().limit(perPage).skip(begin);
+                        const books = await Book.find().populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"}).populate({path: "category"}).limit(perPage).skip(begin);
                         res.render('admin/book/list', {books: books, way: newArr[i], page: page, end: end, categories: categories});
                     }
                 }
@@ -173,6 +173,84 @@ class BookController {
             }
         } catch (err) {
             res.render("error");
+        }
+    }
+
+    async search(req, res) {
+        let keyword = req.query.keyword;
+        let category = req.query.category;
+        let price = req.query.price;
+        console.log(keyword)
+        console.log(category)
+        console.log(price)
+        let categoryId = await Category.findOne({name: category});
+        let query = {};
+        if (keyword && keyword !== '') {
+            query = {
+                name: {$regex: keyword, $options: 'i'},
+            }
+        }
+        if (category !== 'Thể loại') {
+            query = {
+                ...query,
+                category: {$in: [categoryId._id]}
+            }
+        }
+        if (price !== 'Mức giá') {
+            if (price === '200000+') {
+                price = price.toString().split('+');
+                let min = price[0]
+                query = {
+                    ...query,
+                    price: {$gt: min}
+                }
+            } else {
+                price = price.toString().split('-')
+                let min = price[0];
+                let max = price[1];
+                query = {
+                    ...query,
+                    price: {$gt: min, $lte: max}
+                }
+            }
+        }
+        const allBooks = await Book.find(query).populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"}).populate({path: "category"});
+        let sum = allBooks.length;
+        console.log(sum)
+        if (sum !== 0) {
+            let arr = [];
+            let perPage = 6;
+            let end = Math.ceil(sum / perPage);
+            for (let i = 1; i <= end; i++) {
+                arr.push(i)
+            }
+            let newArr = lodash.chunk(arr, 3);
+            console.log(newArr)
+            console.log(9)
+            for (let i = 0; i < newArr.length; i++) {
+                for (let j = 0; j < newArr[i].length; j++) {
+                    if (+req.query.page === newArr[i][j]) {
+                        let page = req.query.page;
+                        let begin = (+page - 1) * perPage;
+                        const books = await Book.find(query).populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"}).populate({path: "category"}).limit(perPage).skip(begin);
+                        console.log(books);
+                        console.log(newArr[i]);
+                        console.log(page);
+                        console.log(end)
+                        res.status(200).json({
+                            sum: sum,
+                            books: books,
+                            way: newArr[i],
+                            page: page,
+                            end: end
+                        });
+                    }
+                }
+            }
+        } else {
+            res.status(200).json({
+                sum: sum
+            });
         }
     }
 }

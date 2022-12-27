@@ -39,7 +39,7 @@ const getChart = (value) => {
                 },
                 {
                     data: reveneuData,
-                    label: "Reveneu",
+                    label: "Revenue",
                     borderColor: "#8e5ea2",
                     fill: false
                 },

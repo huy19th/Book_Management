@@ -15,7 +15,7 @@ const ordersByMonth = () => {
             let data = res.data;
             document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data.dataCurrent;
             document.getElementById('numberChange').innerHTML = (data.number) ? `${data.number}%` : ''
-            document.getElementById('orders').innerHTML = '| This Year';
+            document.getElementById('orders').innerHTML = '| This Month';
             document.getElementById('message').innerHTML = `${data.message}`
         })
 }
@@ -24,7 +24,9 @@ const todayOrders = () => {
     axios.get('/admin/orders/today')
         .then(res => {
             let data = res.data;
-            document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data[0].total;
-            document.getElementById('orders').innerHTML = '| Today'
+            document.getElementById('totalOrders').innerHTML = (data.length === 0) ? 0 : data.dataCurrent;
+            document.getElementById('numberChange').innerHTML = (data.number) ? `${data.number}%` : ''
+            document.getElementById('orders').innerHTML = '| Today';
+            document.getElementById('message').innerHTML = `${data.message}`
         })
 }

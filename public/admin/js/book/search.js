@@ -48,12 +48,3 @@ const searchBook = (value) => {
         }
     })
 }
-
-// <a className="page-link"
-//    href="/admin/book/search/filter/${+data.page-1}">Previous</a>
-
-// <a className="page-link" href="/admin/book/search/filter/${i}">
-//     ${i}</a>
-
-// <a className="page-link"
-//    href="/admin/book/search/filter/${+data.page+1}">Next</a>

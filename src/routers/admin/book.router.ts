@@ -33,5 +33,6 @@ router.get('/detail/:id', bookController.showBookDetail);
 
 router.get('/delete/:id', bookController.deleteBook);
 
+router.get('/search/filter', bookController.search);
 
 export default router;

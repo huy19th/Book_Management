@@ -118,8 +118,8 @@
                     </div>
                     <div class="ps-3">
                       <h6 id="totalReveneu"></h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span
-                        class="text-muted small pt-2 ps-1">increase</span>
+                      <span class="text-success small pt-1 fw-bold" id="reveneuChange">8%</span> <span
+                        class="text-muted small pt-2 ps-1" id="messageReveneu">increase</span>
 
                     </div>
                   </div>
@@ -155,8 +155,8 @@
                     </div>
                     <div class="ps-3">
                       <h6 id="totalCustomers"></h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                        class="text-muted small pt-2 ps-1">decrease</span>
+                      <span class="text-danger small pt-1 fw-bold" id="customersChange"></span> <span
+                        class="text-muted small pt-2 ps-1" id="messageCustomers">decrease</span>
 
                     </div>
                   </div>
@@ -185,7 +185,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Reports <span>/Year</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -299,10 +299,10 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-  <script src="/admin/js/order.js"></script>
-  <script src="/admin/js/reveneu.js"></script>
-  <script src="/admin/js/customer.js"></script>
-  <script src="/admin/js/chart.js"></script>
+  <script src="/admin/js/dashboard/order.js"></script>
+  <script src="/admin/js/dashboard/reveneu.js"></script>
+  <script src="/admin/js/dashboard/customer.js"></script>
+  <script src="/admin/js/dashboard/chart.js"></script>
   <script>
     function loadingPage() {
       todayReveneu();
