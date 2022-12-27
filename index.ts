@@ -61,6 +61,15 @@ app.get('/admin/dashboard', async (req, res) => {
 
 // Viết api
 
+app.get('/admin/order/delete/id', async (req, res) => {
+    let ids = req.query.ids;
+    console.log(ids);
+    await Order.deleteMany({_id: {$in: ids}});
+    res.status(200).json({
+        message: 'Success!'
+    })
+})
+
 // Reveneu
 
 app.get('/admin/reveneu/thisyear', async (req, res) => {

@@ -166,7 +166,7 @@ class BookController {
             });
             if (book) {
                 await book.remove();
-                res.redirect('/admin/book');
+                res.redirect('back');
             }
             else {
                 res.render("error");

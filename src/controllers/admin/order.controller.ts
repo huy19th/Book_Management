@@ -225,14 +225,14 @@ class OrderController {
         }
     }
 
-    async delete(req, res) {
-        let ids = req.query.ids;
-        console.log(ids);
-        await Order.deleteMany({_id: {$in: ids}});
-        res.status(200).json({
-            message: 'Success!'
-        })
-    }
+    // async delete(req, res) {
+    //     let ids = req.query.ids;
+    //     console.log(ids);
+    //     await Order.deleteMany({_id: {$in: ids}});
+    //     res.status(200).json({
+    //         message: 'Success!'
+    //     })
+    // }
 
     async search(req, res) {
         let email = req.query.email;

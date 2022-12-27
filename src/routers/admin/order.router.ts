@@ -11,7 +11,7 @@ router.get('/on-delivery/:page', orderController.showOrdersOnDelivery);
 
 router.get('/completed/:page', orderController.showOrdersCompleted);
 
-router.get('/delete', orderController.delete);
+// router.get('/delete', orderController.delete);
 
 router.get('/search/filter', orderController.search);
 
