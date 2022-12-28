@@ -58,8 +58,9 @@ class OrderController {
                                 deliver_Date: {$dateToString: {format: "%Y-%m-%d", date: "$deliverDate"}},
                                 totalMoney: 1
                             }
-                        }, {$skip: +begin}, {$limit: +perPage},
-                        {$sort: {order_Date: -1}}
+                        },
+                        {$sort: {order_Date: -1}},
+                        {$skip: +begin}, {$limit: +perPage}
                     ])
                     res.render('admin/order/list', {orders: orders, way: newArr[i], page: page, end: end});
                 }
