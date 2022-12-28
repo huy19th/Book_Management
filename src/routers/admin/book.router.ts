@@ -24,7 +24,7 @@ router.get('/add', checkAuthorization, bookController.showFormAddBook);
 
 router.post('/add', upload.single('image'), validateBookProperties, bookController.saveBook);
 
-router.get('/:page(\d+)?', bookController.showList);
+router.get('/:page([0-9]{0,})', bookController.showList);
 
 router.post('/detail/:id', upload.single('image'), validateBookProperties, bookController.saveBook);
 
