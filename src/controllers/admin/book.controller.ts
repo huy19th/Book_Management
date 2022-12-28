@@ -68,6 +68,7 @@ class BookController {
     }
     async showList(req, res) {
         try {
+            let page = +req.params.page || 1;
             const categories = await Category.find({})
             const numberOfBooks = await Book.aggregate([
                 {$count: "total"}
@@ -84,8 +85,7 @@ class BookController {
             console.log(newArr)
             for (let i = 0; i < newArr.length; i++) {
                 for (let j = 0; j < newArr[i].length; j++) {
-                    if (+req.params.page === newArr[i][j]) {
-                        let page = req.params.page;
+                    if (page === newArr[i][j]) {
                         let begin = (page - 1) * perPage;
                         const books = await Book.find().populate({path: "author", select: "name"}).populate({path: "publisher", select: "name"}).populate({path: "category"}).limit(perPage).skip(begin);
                         res.render('admin/book/list', {books: books, way: newArr[i], page: page, end: end, categories: categories});
