@@ -20,16 +20,17 @@ User can visit e-commerce website to look for books & make orders
 
 ## Features
 
-- Sign up & Sign in using email/password
-- Create artist & album, update album, artist info
-- Create song, audio file & album covers are upload to firebase
-- Update song info
-- View newly released songs
-- View most listened songs
-- Search song by title
-- Search album by title
-- Search artist by name
-- Play/pause song, adjust volume
-- Add seek bar to jump to a certain time in the song
-- Create playlists, add song to playlists
+User
+- User can sign up & sign in using email/password
+- Search books by title
+- Filter books by category
+- Add book to cart
+- Check out with certain items checked in cart
+
+Admin
+- Create & update book
+- Search & filter books
+- View orders list order by time (descending)
+- View order detail
+- View sales report (number of orders, revenue this months)
 
